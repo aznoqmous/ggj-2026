@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LevelResource" format=3 uid="uid://c2dl41v5vp72a"]
+
+[ext_resource type="Script" uid="uid://cr7j2lefxfntf" path="res://scripts/resources/level_resource.gd" id="1_t2lh5"]
+[ext_resource type="Script" uid="uid://ctm3257qxoewp" path="res://scripts/resources/mask_resource.gd" id="2_uv07l"]
+[ext_resource type="Resource" uid="uid://d2adtaq3e6wsf" path="res://resources/masks/mask_swap.tres" id="3_msmwg"]
+[ext_resource type="Resource" uid="uid://kt34w34jw13b" path="res://resources/masks/mask_clock.tres" id="4_eux38"]
+[ext_resource type="Resource" uid="uid://ny5tath1j1yy" path="res://resources/masks/mask_none.tres" id="5_qg6xw"]
+
+[resource]
+script = ExtResource("1_t2lh5")
+shamans_needed_masks = Array[ExtResource("2_uv07l")]([ExtResource("4_eux38"), ExtResource("3_msmwg"), ExtResource("4_eux38"), ExtResource("5_qg6xw"), ExtResource("4_eux38"), ExtResource("3_msmwg")])
+shamans_starting_masks = Array[ExtResource("2_uv07l")]([ExtResource("3_msmwg"), ExtResource("4_eux38"), ExtResource("5_qg6xw"), ExtResource("4_eux38"), ExtResource("3_msmwg"), ExtResource("4_eux38")])
+metadata/_custom_type_script = "uid://cr7j2lefxfntf"
