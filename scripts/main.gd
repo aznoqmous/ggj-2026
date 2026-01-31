@@ -11,12 +11,15 @@ extends Node3D
 @onready var shamans_container: Node3D = $ShamansContainer
 @onready var masks_container: Node3D = $MasksContainer
 
+@export_category("Levels")
+@export var levels: Array[LevelResource]
+
 var shamans : Array[Shaman]
 var masks : Array[Mask]
 
 var selected_mask: Mask
 var is_animating := false
-@export var levels: Array[LevelResource]
+var swap_animation_duration := 0.5
 
 func _ready():
 	load_level(levels[0])
@@ -25,7 +28,6 @@ func _process(delta):
 	var mouse_position = get_viewport().get_mouse_position() - get_viewport().get_visible_rect().size / 2.0
 	camera_3d.look_at(camera_target.global_position + Vector3(mouse_position.x, 0, mouse_position.y) / 1000.0 * camera_sensitivity)
 	
-
 func create_mask(pos: Vector3)-> Mask:
 	var mask := mask_scene.instantiate() as Mask
 	masks_container.add_child(mask)
@@ -47,26 +49,35 @@ func create_shaman(pos: Vector3) -> Shaman:
 
 func click_mask(mask: Mask):
 	if is_animating: return
+	
 	if not selected_mask:
 		# select mask
 		selected_mask = mask
 		mask.selected = true
+		update_selectable_masks(selected_mask)
 		return;
-	selected_mask.selected = false
+		
 	if selected_mask == mask:
 		# unselect mask
+		selected_mask.selected = false
 		selected_mask = null
+		update_selectable_masks(null)
 	else:
 		# swap with selected mask
+		selected_mask.selected = false
 		var target_shaman = selected_mask.assigned_shaman
 		selected_mask.assigned_shaman = mask.assigned_shaman
 		mask.assigned_shaman = target_shaman
-		is_animating = true
-		await get_tree().create_timer(1.0).timeout
-		is_animating = false
+		await swap_animate()
 		apply_effect(selected_mask)
 		selected_mask = null
+		update_selectable_masks(null)
 
+func swap_animate():
+	is_animating = true
+	await get_tree().create_timer(swap_animation_duration).timeout
+	is_animating = false
+	
 func apply_effect(mask: Mask):
 	match mask.mask_resource.effect:
 		MaskResource.Effect.None:
@@ -76,12 +87,24 @@ func apply_effect(mask: Mask):
 			var lmask = neighbours[0].assigned_shaman
 			neighbours[0].assigned_shaman = neighbours[1].assigned_shaman
 			neighbours[1].assigned_shaman = lmask
+			await swap_animate()
 		MaskResource.Effect.Clockwise:
 			var omasks := get_ordered_masks()
 			for i in masks.size():
 				var left_index = i - 1
 				if i < 0: left_index = masks.size() - 1
 				omasks[i].assigned_shaman =  shamans[left_index]
+			await swap_animate()
+
+func update_selectable_masks(mask: Mask):
+	for m in masks: m.selectable = true
+	if not mask: return
+	match mask.mask_resource.available_move:
+		MaskResource.AvailableMove.AdjacentCell:
+			for m in masks: m.selectable = false
+			for n in get_neighbour_masks(mask): n.selectable = true
+		MaskResource.AvailableMove.All:
+			pass
 
 func get_neighbour_masks(mask: Mask) -> Array[Mask]:
 	var masks: Array[Mask]
@@ -108,5 +131,5 @@ func load_level(level_resource: LevelResource):
 		var shaman : Shaman = create_shaman(Vector3.LEFT.rotated(Vector3.UP, i / count * TAU - PI / 2.0) * shaman_circle_radius)
 		shaman.needed_mask = level_resource.shamans_needed_masks[i]
 		var mask = create_mask(shaman.mask_position.global_position)
-		mask.assigned_shaman = shaman
 		mask.load_resource(level_resource.shamans_starting_masks[i])
+		mask.assigned_shaman = shaman

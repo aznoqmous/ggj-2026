@@ -6,6 +6,7 @@ class_name Mask
 
 var hovered := false
 var selected := false
+var selectable := true
 
 var assigned_shaman: Shaman :
 	set(value):
@@ -24,13 +25,13 @@ func _ready():
 	)
 
 func _input(event: InputEvent) -> void:
-	if not hovered: return;
+	if not (hovered and selectable): return;
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == 1:
 		clicked.emit()
 
 func _process(delta):
 	if not get_viewport().get_camera_3d(): return;
-	model_container.scale = lerp(model_container.scale, Vector3.ONE if not hovered else Vector3.ONE * 1.5, delta * 5.0)
+	model_container.scale = lerp(model_container.scale, Vector3.ONE if not (hovered and selectable) else Vector3.ONE * 1.5, delta * 5.0)
 	model_container.position.y = lerp(model_container.position.y,
 		sin(Time.get_ticks_msec() / 1000.0 * TAU) * 0.1 if selected else sin(Time.get_ticks_msec() / 1000.0 * TAU) * 0.01
 	, delta * 5.0)

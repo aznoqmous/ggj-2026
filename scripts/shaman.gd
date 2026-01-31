@@ -8,6 +8,7 @@ var needed_mask : MaskResource
 var assigned_mask: Mask :
 	set(value):
 		assigned_mask = value
-		if assigned_mask:
-			print(assigned_mask.mask_resource, " ", needed_mask, assigned_mask.mask_resource == needed_mask)
-		correct_mask_particles.emitting = assigned_mask.mask_resource == needed_mask
+		update_particles()
+
+func update_particles():
+	correct_mask_particles.emitting = assigned_mask.mask_resource == needed_mask
