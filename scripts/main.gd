@@ -149,7 +149,7 @@ func load_level(level_resource: LevelResource):
 	
 	var count :float= level_resource.shamans_needed_masks.size()
 	for i in count:
-		var shaman : Shaman = create_shaman(Vector3.LEFT.rotated(Vector3.UP, i / count * TAU - PI / 2.0) * shaman_circle_radius)
+		var shaman : Shaman = create_shaman(Vector3.LEFT.rotated(Vector3.UP, i / count * TAU - PI / 2.0 + (TAU / count) / 2.0) * shaman_circle_radius)
 		shaman.needed_mask = level_resource.shamans_needed_masks[i]
 		var mask = create_mask(shaman.mask_position.global_position)
 		mask.load_resource(level_resource.shamans_starting_masks[i])

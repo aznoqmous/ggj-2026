@@ -78,6 +78,7 @@ mesh = SubResource("PlaneMesh_kk6lg")
 
 [node name="SelectableLight" type="OmniLight3D" parent="." unique_id=1698291465]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.104387045, 0)
+visible = false
 light_color = Color(0.7372549, 1, 0.35686275, 1)
 light_energy = 0.366
 omni_range = 3.026

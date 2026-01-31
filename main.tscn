@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://dsorqsd0e6gp8" path="res://scenes/shaman.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://bf01jl6xk7ctv" path="res://scenes/mask.tscn" id="3_1bvp3"]
 [ext_resource type="Script" uid="uid://cr7j2lefxfntf" path="res://scripts/resources/level_resource.gd" id="4_7mycd"]
-[ext_resource type="Resource" path="res://resources/levels/level_4-1.tres" id="5_074og"]
-[ext_resource type="Resource" path="res://resources/levels/level_4-2.tres" id="6_cegan"]
+[ext_resource type="Resource" uid="uid://eosiecqvngos" path="res://resources/levels/level_4-1.tres" id="5_074og"]
+[ext_resource type="Resource" uid="uid://cdlagddcwbyup" path="res://resources/levels/level_4-2.tres" id="6_cegan"]
 [ext_resource type="Script" uid="uid://phkh2o26tdnn" path="res://scripts/main_camera.gd" id="7_4c57u"]
 [ext_resource type="Resource" path="res://resources/levels/level_5-1.tres" id="7_82xsv"]
 [ext_resource type="Texture2D" uid="uid://da22mvr2858k0" path="res://sprites/fire-spritesheet.png" id="8_5vw27"]
@@ -103,11 +103,18 @@ material = SubResource("StandardMaterial3D_w48qg")
 [sub_resource type="PlaneMesh" id="PlaneMesh_1bvp3"]
 size = Vector2(100, 100)
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_074og"]
+
+[sub_resource type="Sky" id="Sky_cegan"]
+sky_material = SubResource("ProceduralSkyMaterial_074og")
+
 [sub_resource type="Environment" id="Environment_dg77c"]
+background_mode = 2
+sky = SubResource("Sky_cegan")
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.05
 glow_enabled = true
-glow_intensity = 1.24
-glow_strength = 0.59
-glow_bloom = 0.39
+glow_bloom = 0.4
 fog_enabled = true
 fog_light_color = Color(0.032226563, 0.06852918, 0.125, 1)
 
@@ -131,20 +138,21 @@ visible = false
 texture = ExtResource("1_ig7tw")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Campfire" unique_id=841154796]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3105078, 0)
-light_color = Color(0.7381592, 1, 0.35546875, 1)
-light_energy = 0.335
-omni_range = 6.447
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.763392, 0)
+light_color = Color(0.9228821, 1, 0.48046875, 1)
+omni_range = 1.621
+omni_attenuation = 5.315
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Campfire" unique_id=595497951]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.330863, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3878512, 0)
 light_color = Color(0.7381592, 1, 0.35546875, 1)
-light_energy = 0.8
+light_energy = 0.5
+omni_range = 10.685
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Campfire" unique_id=1465895426]
 transform = Transform3D(1, 0, 0, 0, 0.97935706, 0.2021378, 0, -0.2021378, 0.97935706, 0, 0.6388743, 0)
-light_color = Color(0.04710388, 0.3247177, 0.57421875, 1)
-light_energy = 0.5
+light_color = Color(0, 0.16971773, 0.3203125, 1)
+light_energy = 0.832
 
 [node name="FireParticles" type="GPUParticles3D" parent="Campfire" unique_id=1394658753]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, -0.008229256, 0)
@@ -181,7 +189,7 @@ transform = Transform3D(-0.92991537, 0.17507014, 0.32320145, 0, 0.8792209, -0.47
 assigned_shaman = NodePath("../../ShamansContainer/Shaman2")
 
 [node name="ModelContainer" parent="MasksContainer/Mask2" index="1" unique_id=1609231757]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.030397689, -0.8932487)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.029601268, -0.8932487)
 
 [node name="MaskClock" parent="MasksContainer/Mask2/ModelContainer" index="0" unique_id=1713705050 instance=ExtResource("11_efxa6")]
 
@@ -193,7 +201,7 @@ transform = Transform3D(-0.99982613, -0.0032003664, -0.0067236116, 0, 0.9028601,
 assigned_shaman = NodePath("../../ShamansContainer/Shaman3")
 
 [node name="ModelContainer" parent="MasksContainer/Mask3" index="1" unique_id=1609231757]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.030399194, -0.8932487)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.029600965, -0.8932487)
 
 [node name="MaskSwap" parent="MasksContainer/Mask3/ModelContainer" index="0" unique_id=937219786 instance=ExtResource("12_dg77c")]
 

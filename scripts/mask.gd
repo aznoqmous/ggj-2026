@@ -35,11 +35,12 @@ func _process(delta):
 	if not get_viewport().get_camera_3d(): return;
 	model_container.scale = lerp(model_container.scale, Vector3.ONE if not (hovered and selectable) else Vector3.ONE * 1.3, delta * 10.0)
 	
-	model_container.position.y = lerp(model_container.position.y,
+	if not selectable: model_container.position.y = lerp(model_container.position.y, 0.0, delta * 5.0)
+	else:
+		model_container.position.y = lerp(model_container.position.y,
 		sin(Time.get_ticks_msec() / 1000.0 * TAU) * 0.1 if selected else sin(Time.get_ticks_msec() / 1000.0 * TAU) * 0.05
-	, delta * 5.0)
-	if not selectable: model_container.position.y = 0.0
-	
+		, delta * 5.0)
+		
 	if assigned_shaman:
 		global_position = lerp(global_position, assigned_shaman.mask_position.global_position, delta * 5.0)
 	
