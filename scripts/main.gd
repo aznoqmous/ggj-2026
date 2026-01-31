@@ -14,6 +14,7 @@ class_name Main
 
 @export_category("Levels")
 @export var levels: Array[LevelResource]
+var current_level_index := 0
 
 var shamans : Array[Shaman]
 var masks : Array[Mask]
@@ -24,6 +25,9 @@ var swap_animation_duration := 0.5
 
 func _ready():
 	load_level(levels[0])
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_right"): next_level()
 
 func _process(delta):
 	var mouse_position = get_viewport().get_mouse_position() - get_viewport().get_visible_rect().size / 2.0
@@ -147,3 +151,7 @@ func load_level(level_resource: LevelResource):
 		var mask = create_mask(shaman.mask_position.global_position)
 		mask.load_resource(level_resource.shamans_starting_masks[i])
 		mask.assigned_shaman = shaman
+
+func next_level():
+	current_level_index += 1
+	load_level(levels[current_level_index])
