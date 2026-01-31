@@ -105,6 +105,8 @@ func update_selectable_masks(mask: Mask):
 			for n in get_neighbour_masks(mask): n.selectable = true
 		MaskResource.AvailableMove.All:
 			pass
+	# user must have the choice to unselect current mask
+	mask.selectable = true
 
 func get_neighbour_masks(mask: Mask) -> Array[Mask]:
 	var masks: Array[Mask]
