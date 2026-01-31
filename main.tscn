@@ -6,24 +6,25 @@
 [ext_resource type="PackedScene" uid="uid://bf01jl6xk7ctv" path="res://scenes/mask.tscn" id="3_1bvp3"]
 [ext_resource type="Script" uid="uid://cr7j2lefxfntf" path="res://scripts/resources/level_resource.gd" id="4_7mycd"]
 [ext_resource type="Resource" uid="uid://eosiecqvngos" path="res://resources/levels/level_4-1.tres" id="5_074og"]
-[ext_resource type="Resource" path="res://resources/levels/level_10-1.tres" id="5_d13ii"]
+[ext_resource type="Resource" uid="uid://cs2vx7icjujr3" path="res://resources/levels/level_10-1.tres" id="5_d13ii"]
 [ext_resource type="Resource" uid="uid://cdlagddcwbyup" path="res://resources/levels/level_4-2.tres" id="6_cegan"]
 [ext_resource type="Script" uid="uid://phkh2o26tdnn" path="res://scripts/main_camera.gd" id="7_4c57u"]
-[ext_resource type="Resource" path="res://resources/levels/level_5-1.tres" id="7_82xsv"]
+[ext_resource type="Resource" uid="uid://bhbua45jo8823" path="res://resources/levels/level_5-1.tres" id="7_82xsv"]
 [ext_resource type="Texture2D" uid="uid://da22mvr2858k0" path="res://sprites/fire-spritesheet.png" id="8_5vw27"]
-[ext_resource type="Resource" path="res://resources/levels/level_5-2.tres" id="8_getpj"]
+[ext_resource type="Resource" uid="uid://bcskxfvsimno" path="res://resources/levels/level_5-2.tres" id="8_getpj"]
 [ext_resource type="Texture2D" uid="uid://dcbwll7yw8ds7" path="res://sprites/particle.png" id="9_kek77"]
-[ext_resource type="Resource" path="res://resources/levels/level_6-1.tres" id="9_ryguw"]
-[ext_resource type="Resource" path="res://resources/levels/level_6-2.tres" id="10_d13ii"]
-[ext_resource type="Resource" path="res://resources/levels/level_6-3.tres" id="11_1u8w0"]
+[ext_resource type="Resource" uid="uid://28cpdwl184bt" path="res://resources/levels/level_6-1.tres" id="9_ryguw"]
+[ext_resource type="Resource" uid="uid://do3dfk64obj51" path="res://resources/levels/level_6-2.tres" id="10_d13ii"]
+[ext_resource type="Resource" uid="uid://cha2xe012u5n3" path="res://resources/levels/level_6-3.tres" id="11_1u8w0"]
 [ext_resource type="PackedScene" uid="uid://xmjk6prny0i5" path="res://scenes/masks/mask_clock.tscn" id="11_efxa6"]
-[ext_resource type="Resource" path="res://resources/levels/level_6-4.tres" id="12_0odxb"]
+[ext_resource type="Resource" uid="uid://ypc2jucpndu6" path="res://resources/levels/level_6-4.tres" id="12_0odxb"]
 [ext_resource type="PackedScene" uid="uid://bbmyiyfx1lg4m" path="res://scenes/masks/mask_swap.tscn" id="12_dg77c"]
-[ext_resource type="Resource" path="res://resources/levels/level_6-5.tres" id="13_1u8w0"]
-[ext_resource type="Resource" path="res://resources/levels/level_7-1.tres" id="14_1u8w0"]
-[ext_resource type="Resource" path="res://resources/levels/level_8-1.tres" id="15_0odxb"]
-[ext_resource type="Resource" path="res://resources/levels/level_8-2.tres" id="16_lswn8"]
-[ext_resource type="Resource" path="res://resources/levels/level_9-1.tres" id="17_a6jrf"]
+[ext_resource type="Resource" uid="uid://c2dl41v5vp72a" path="res://resources/levels/level_6-5.tres" id="13_1u8w0"]
+[ext_resource type="Resource" uid="uid://cld28r14sutkb" path="res://resources/levels/level_7-1.tres" id="14_1u8w0"]
+[ext_resource type="Resource" uid="uid://hpfxcc3e3oy3" path="res://resources/levels/level_8-1.tres" id="15_0odxb"]
+[ext_resource type="Resource" uid="uid://dg0vcbwwo8wd7" path="res://resources/levels/level_8-2.tres" id="16_lswn8"]
+[ext_resource type="Resource" uid="uid://cpyg0d640a45l" path="res://resources/levels/level_9-1.tres" id="17_a6jrf"]
+[ext_resource type="Script" uid="uid://bfsvapxkw13np" path="res://scripts/runes.gd" id="25_0odxb"]
 
 [sub_resource type="Gradient" id="Gradient_5vw27"]
 offsets = PackedFloat32Array(0, 0.20366132, 0.49199083, 0.73913044, 1)
@@ -62,11 +63,9 @@ transparency = 2
 alpha_scissor_threshold = 0.7
 alpha_antialiasing_mode = 0
 blend_mode = 1
+shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("8_5vw27")
-emission_enabled = true
-emission = Color(0.42791748, 1, 0.1953125, 1)
-emission_energy_multiplier = 0.3
 billboard_mode = 3
 billboard_keep_scale = true
 particles_anim_h_frames = 6
@@ -104,11 +103,9 @@ turbulence_influence_over_life = SubResource("CurveTexture_lswn8")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w48qg"]
 transparency = 1
+shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("9_kek77")
-emission_enabled = true
-emission = Color(0.3453346, 1, 0.18359375, 1)
-emission_energy_multiplier = 16.0
 billboard_mode = 3
 billboard_keep_scale = true
 particles_anim_h_frames = 1
@@ -143,7 +140,7 @@ shaman_scene = ExtResource("2_h2yge")
 levels = Array[ExtResource("4_7mycd")]([ExtResource("5_074og"), ExtResource("6_cegan"), ExtResource("7_82xsv"), ExtResource("8_getpj"), ExtResource("9_ryguw"), ExtResource("10_d13ii"), ExtResource("11_1u8w0"), ExtResource("12_0odxb"), ExtResource("13_1u8w0"), ExtResource("14_1u8w0"), ExtResource("15_0odxb"), ExtResource("16_lswn8"), ExtResource("17_a6jrf"), ExtResource("5_d13ii")])
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=799955140]
-transform = Transform3D(0.9999794, -0.004570232, 0.0045086257, 0, 0.7022924, 0.7118885, -0.00641987, -0.7118738, 0.7022779, 0, 6, 6)
+transform = Transform3D(0.99961996, -0.020662611, 0.018241685, 0, 0.6618249, 0.74965835, -0.027562702, -0.74937356, 0.66157347, 0, 6, 6)
 script = ExtResource("7_4c57u")
 
 [node name="CameraTarget" type="Node3D" parent="." unique_id=1967595355]
@@ -199,7 +196,7 @@ transform = Transform3D(-0.9998241, 0, -0.01875091, 0, 1, 0, 0.01875091, 0, -0.9
 [node name="MasksContainer" type="Node3D" parent="." unique_id=654119103]
 
 [node name="Mask" parent="MasksContainer" unique_id=1193392792 node_paths=PackedStringArray("assigned_shaman") instance=ExtResource("3_1bvp3")]
-transform = Transform3D(-0.93281037, -0.1803351, -0.31167674, 0, 0.8654526, -0.5007566, 0.36009273, -0.46715316, -0.8073901, -3.110891, 1.0018739, -2.0586815)
+transform = Transform3D(-0.9328105, -0.18033499, -0.31167653, 0, 0.8654526, -0.5007566, 0.3600925, -0.46715322, -0.8073902, -3.1108909, 1.0018739, -2.0586817)
 assigned_shaman = NodePath("../../ShamansContainer/Shaman")
 
 [node name="Mask2" parent="MasksContainer" unique_id=1533408053 node_paths=PackedStringArray("assigned_shaman") instance=ExtResource("3_1bvp3")]
@@ -207,7 +204,7 @@ transform = Transform3D(-0.9332957, 0.17986695, 0.31057248, 0, 0.86528426, -0.50
 assigned_shaman = NodePath("../../ShamansContainer/Shaman2")
 
 [node name="ModelContainer" parent="MasksContainer/Mask2" index="1" unique_id=1609231757]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.024762137, -0.8932487)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.028656578, -0.8932487)
 
 [node name="MaskClock" parent="MasksContainer/Mask2/ModelContainer" index="0" unique_id=1713705050 instance=ExtResource("11_efxa6")]
 
@@ -219,7 +216,7 @@ transform = Transform3D(-0.9998274, -0.0033064806, -0.0064906515, 0, 0.8909732, 
 assigned_shaman = NodePath("../../ShamansContainer/Shaman3")
 
 [node name="ModelContainer" parent="MasksContainer/Mask3" index="1" unique_id=1609231757]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.024761917, -0.8932487)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.028659027, -0.8932487)
 
 [node name="MaskSwap" parent="MasksContainer/Mask3/ModelContainer" index="0" unique_id=937219786 instance=ExtResource("12_dg77c")]
 
@@ -231,6 +228,9 @@ mesh = SubResource("PlaneMesh_1bvp3")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=722427667]
 environment = SubResource("Environment_dg77c")
+
+[node name="Rune" type="Node" parent="." unique_id=1026484157]
+script = ExtResource("25_0odxb")
 
 [editable path="MasksContainer/Mask2"]
 [editable path="MasksContainer/Mask3"]

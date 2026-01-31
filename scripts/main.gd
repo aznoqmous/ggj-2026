@@ -18,6 +18,8 @@ var current_level_index := 0
 var shamans : Array[Shaman]
 var masks : Array[Mask]
 
+@export var rune : Runes
+
 var selected_mask: Mask
 var is_animating := false
 var swap_animation_duration := 0.5
