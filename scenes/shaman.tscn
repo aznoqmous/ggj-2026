@@ -216,7 +216,8 @@ shadow_mesh = SubResource("ArrayMesh_uusug")
 
 [sub_resource type="Animation" id="Animation_laicl"]
 resource_name = "Take 001"
-length = 3.3333333
+length = 3.3
+loop_mode = 1
 tracks/0/type = "rotation_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
@@ -254,7 +255,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0018739, 0.10813767)
 
 [node name="CorrectMaskParticles" type="GPUParticles3D" parent="." unique_id=1378581494]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.048478007)
-amount = 16
+emitting = false
 process_material = SubResource("ParticleProcessMaterial_bc3i5")
 draw_pass_1 = SubResource("QuadMesh_r0isr")
 
@@ -283,19 +284,20 @@ libraries/ = SubResource("AnimationLibrary_2shef")
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.488272, -0.18986547)
 
 [node name="SM_Shaman" type="MeshInstance3D" parent="SM_ShamanBody3" unique_id=748145721]
-transform = Transform3D(1, 0, 0, 0, 0.0074087977, 0.9999726, 0, -0.9999726, 0.0074087977, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.007408746, 0.9999726, 0, -0.9999726, 0.007408746, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_n0yw1")
 mesh = SubResource("ArrayMesh_r0isr")
 
 [node name="Object001" type="MeshInstance3D" parent="SM_ShamanBody3" unique_id=1261411947]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_n0yw1")
 mesh = SubResource("ArrayMesh_6hvm8")
 
 [node name="Object002" type="MeshInstance3D" parent="SM_ShamanBody3" unique_id=682427210]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_n0yw1")
 mesh = SubResource("ArrayMesh_yccm0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SM_ShamanBody3" unique_id=810540748]
 libraries/ = SubResource("AnimationLibrary_l5rbg")
+autoplay = &"Take 001"

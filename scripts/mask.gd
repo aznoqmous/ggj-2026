@@ -59,7 +59,7 @@ func _process(delta):
 	if assigned_shaman:
 		global_position = lerp(global_position, assigned_shaman.mask_position.global_position, delta * 5.0)
 	
-	if mask_model:
+	if mask_model and assigned_shaman:
 		mask_model.is_emissive_active = assigned_shaman.is_valid
 		mask_model.is_light_active = selected
 	

@@ -7,7 +7,6 @@ class_name Main
 
 @onready var camera_3d: Camera3D = $Camera3D
 @onready var camera_target: Node3D = $CameraTarget
-@export_range(0.1, 2.0, 0.01) var camera_sensitivity := 1.0
 
 @onready var shamans_container: Node3D = $ShamansContainer
 @onready var masks_container: Node3D = $MasksContainer
@@ -32,10 +31,7 @@ func _input(event: InputEvent) -> void:
 		current_level_index = clamp(current_level_index - 1, 0, levels.size() - 1)
 		load_level(levels[current_level_index])
 
-func _process(delta):
-	var mouse_position = get_viewport().get_mouse_position() - get_viewport().get_visible_rect().size / 2.0
-	camera_3d.look_at(camera_target.global_position + Vector3(mouse_position.x, 0, mouse_position.y) / 1000.0 * camera_sensitivity)
-	
+
 func create_mask(pos: Vector3)-> Mask:
 	var mask := mask_scene.instantiate() as Mask
 	masks_container.add_child(mask)
@@ -147,6 +143,7 @@ func get_ordered_masks() -> Array:
 	return shamans.map(func(s: Shaman): return s.assigned_mask)
 	
 func load_level(level_resource: LevelResource):
+	is_animating = true
 	print("Loading level : ", level_resource.resource_path)
 	
 	for s in shamans_container.get_children(): s.queue_free()
@@ -154,15 +151,24 @@ func load_level(level_resource: LevelResource):
 	
 	for m in masks_container.get_children(): m.queue_free()
 	masks.clear()
+
+	await get_tree().create_timer(0.5).timeout
 	
 	var count :float= level_resource.shamans_needed_masks.size()
 	for i in count:
-		var shaman : Shaman = create_shaman(Vector3.LEFT.rotated(Vector3.UP, i / count * TAU - PI / 2.0 + (TAU / count) / 2.0) * shaman_circle_radius)
+		var shaman : Shaman = create_shaman(Vector3.LEFT.rotated(Vector3.UP, i / count * TAU - PI / 2.0 + (TAU / count) / 2.0) * shaman_circle_radius + Vector3.DOWN * 5.0)
 		shaman.needed_mask = level_resource.shamans_needed_masks[i]
-		var mask = create_mask(shaman.mask_position.global_position)
+		var mask = create_mask(shaman.mask_position.global_position + Vector3.UP * 20.0)
 		mask.load_resource(level_resource.shamans_starting_masks[i])
-		mask.assigned_shaman = shaman
-		shaman.was_valid = shaman.is_valid
+	
+	await get_tree().create_timer(1.0).timeout
+	var anim_duration = 1.0
+	for i in count:
+		await get_tree().create_timer(anim_duration / count).timeout
+		masks[i].assigned_shaman = shamans[i]
+		shamans[i].was_valid = shamans[i].is_valid
+		
+	is_animating = false
 
 func next_level():
 	current_level_index = (current_level_index + 1) % levels.size()

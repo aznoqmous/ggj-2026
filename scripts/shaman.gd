@@ -27,4 +27,5 @@ func update_particles():
 func _process(delta: float) -> void:
 	look_at(Vector3.ZERO)
 	shaman_head.rotate_y(delta * TAU)
+	global_position.y = lerp(global_position.y, 0.0, delta * 3.0)
 	if main: selectable_light.omni_range = lerp(selectable_light.omni_range, 1.0 if main.selected_mask and assigned_mask and assigned_mask.selectable else 0.0, delta * 5.0)
