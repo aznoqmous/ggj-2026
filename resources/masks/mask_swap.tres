@@ -2,10 +2,21 @@
 
 [ext_resource type="Script" uid="uid://ctm3257qxoewp" path="res://scripts/resources/mask_resource.gd" id="1_af3qv"]
 [ext_resource type="PackedScene" uid="uid://bbmyiyfx1lg4m" path="res://scenes/masks/mask_swap.tscn" id="1_qltsd"]
+[ext_resource type="AudioStream" uid="uid://dfo40p7oh3cb7" path="res://audio/GAH.wav" id="1_vxpbn"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fheej"]
+streams_count = 1
+stream_0/stream = ExtResource("1_vxpbn")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fcxjp"]
+streams_count = 1
+stream_0/stream = ExtResource("1_vxpbn")
 
 [resource]
 script = ExtResource("1_af3qv")
 available_move = 1
 effect = 1
 model_scene = ExtResource("1_qltsd")
+audio_is_valid = SubResource("AudioStreamRandomizer_fcxjp")
+audio_is_selected = SubResource("AudioStreamRandomizer_fheej")
 metadata/_custom_type_script = "uid://ctm3257qxoewp"

@@ -1,4 +1,5 @@
 extends Node3D
+class_name Main
 
 @export var mask_scene : PackedScene
 @export var shaman_scene : PackedScene
@@ -55,6 +56,7 @@ func click_mask(mask: Mask):
 		selected_mask = mask
 		mask.selected = true
 		update_selectable_masks(selected_mask)
+		mask.play_is_selected_audio()
 		return;
 		
 	if selected_mask == mask:
@@ -72,6 +74,8 @@ func click_mask(mask: Mask):
 		apply_effect(selected_mask)
 		selected_mask = null
 		update_selectable_masks(null)
+		validity_check()
+		
 
 func swap_animate():
 	is_animating = true
@@ -107,6 +111,14 @@ func update_selectable_masks(mask: Mask):
 			pass
 	# user must have the choice to unselect current mask
 	mask.selectable = true
+
+func validity_check():
+	for shaman in shamans:
+		if shaman.is_valid and not shaman.was_valid:
+			shaman.assigned_mask.play_is_valid_audio()
+			shaman.assigned_mask.model_container.scale = Vector3.ONE * 1.5
+			await get_tree().create_timer(0.2).timeout
+		shaman.was_valid = shaman.is_valid
 
 func get_neighbour_masks(mask: Mask) -> Array[Mask]:
 	var masks: Array[Mask]

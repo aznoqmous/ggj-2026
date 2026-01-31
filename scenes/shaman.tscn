@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dsorqsd0e6gp8"]
 
 [ext_resource type="Script" uid="uid://eocbotx5uy1b" path="res://scripts/shaman.gd" id="1_gmayg"]
+[ext_resource type="Texture2D" uid="uid://dcbwll7yw8ds7" path="res://sprites/particle.png" id="2_kk6lg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_waw4e"]
 albedo_color = Color(0.73008794, 0.4482774, 0.21007493, 1)
@@ -13,15 +14,28 @@ point_count = 2
 curve = SubResource("Curve_gmayg")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bc3i5"]
+emission_shape = 1
+emission_sphere_radius = 1.0
 gravity = Vector3(0, 9.8, 0)
+scale_min = 0.01
+scale_max = 0.049999997
 scale_curve = SubResource("CurveTexture_kk6lg")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r01i2"]
+transparency = 1
+albedo_color = Color(1.3425734, 1.353, 0, 1)
+albedo_texture = ExtResource("2_kk6lg")
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 2.4
 billboard_mode = 2
 billboard_keep_scale = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_r0isr"]
 material = SubResource("StandardMaterial3D_r01i2")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kk6lg"]
+size = Vector2(100, 100)
 
 [node name="Shaman" type="Node3D" unique_id=1026160748 node_paths=PackedStringArray("mask_position", "correct_mask_particles")]
 script = ExtResource("1_gmayg")
@@ -29,30 +43,41 @@ mask_position = NodePath("MaskPosition")
 correct_mask_particles = NodePath("CorrectMaskParticles")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1881782728]
-transform = Transform3D(-0.99999267, 0, -0.00382223, 0, 1, 0, 0.00382223, 0, -0.99999267, 2.4483417e-05, 0.5049766, -0.05159538)
+transform = Transform3D(-0.99999267, 0, -0.00382223, 0, 1, 0, 0.00382223, 0, -0.99999267, 2.4483417e-05, 0.5049766, 0.1970963)
 size = Vector3(0.4453125, 1, 0.4951172)
 material = SubResource("StandardMaterial3D_waw4e")
 
 [node name="CSGBox3D2" type="CSGCylinder3D" parent="." unique_id=541056215]
-transform = Transform3D(-0.99999267, 0, -0.00382223, 0, 1, 0, 0.00382223, 0, -0.99999267, -0.00046254767, 0.0932771, -0.1790151)
+transform = Transform3D(-0.99999267, 0, -0.00382223, 0, 1, 0, 0.00382223, 0, -0.99999267, -0.00046254767, 0.0932771, 0.06967658)
 radius = 0.43701172
 height = 0.18658447
 sides = 11
 material = SubResource("StandardMaterial3D_waw4e")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1833077965]
-transform = Transform3D(-0.99999267, 0, -0.00382223, 0, 1, 0, 0.00382223, 0, -0.99999267, -0.00019196725, 0.57516724, -0.10822438)
+transform = Transform3D(-0.99999267, 0, -0.00382223, 0, 1, 0, 0.00382223, 0, -0.99999267, -0.00019196725, 0.57516724, 0.1404673)
 size = Vector3(0.62402344, 0.20788574, 0.6135254)
 material = SubResource("StandardMaterial3D_waw4e")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=416684247]
-transform = Transform3D(-0.99999267, 0, -0.00382223, 0, 1, 0, 0.00382223, 0, -0.99999267, 0.0006300315, 0.6886621, 0.10683142)
+transform = Transform3D(-0.99999267, 0, -0.00382223, 0, 1, 0, 0.00382223, 0, -0.99999267, 0.0006300315, 0.6886621, 0.3555231)
 size = Vector3(0.62402344, 0.4348755, 0.18341064)
 material = SubResource("StandardMaterial3D_waw4e")
 
 [node name="MaskPosition" type="Node3D" parent="." unique_id=1400136155]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.263, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.263, 0.24869168)
 
 [node name="CorrectMaskParticles" type="GPUParticles3D" parent="." unique_id=1378581494]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.048478007)
+amount = 16
 process_material = SubResource("ParticleProcessMaterial_bc3i5")
 draw_pass_1 = SubResource("QuadMesh_r0isr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1088222317]
+mesh = SubResource("PlaneMesh_kk6lg")
+
+[node name="SelectableLight" type="OmniLight3D" parent="." unique_id=1698291465]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.104387045, 0)
+light_color = Color(1, 0.6328125, 0, 1)
+light_energy = 0.366
+omni_range = 3.026
