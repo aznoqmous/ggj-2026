@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cmpu41nbq163s"
-path="res://.godot/imported/ NEUTRAL_5.wav-62e0f354d72b93f599a351ea80b9b298.sample"
+path="res://.godot/imported/NEUTRAL_5.wav-c49aa0247c5ed30254ec8c55f6ab44f1.sample"
 
 [deps]
 
-source_file="res://audio/voices/ NEUTRAL_5.wav"
-dest_files=["res://.godot/imported/ NEUTRAL_5.wav-62e0f354d72b93f599a351ea80b9b298.sample"]
+source_file="res://audio/voices/NEUTRAL_5.wav"
+dest_files=["res://.godot/imported/NEUTRAL_5.wav-c49aa0247c5ed30254ec8c55f6ab44f1.sample"]
 
 [params]
 

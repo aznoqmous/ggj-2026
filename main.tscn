@@ -265,7 +265,7 @@ transform = Transform3D(-0.5518674, 0, -0.83393157, 0, 1, 0, 0.83393157, 0, -0.5
 transform = Transform3D(-0.55285066, 0, 0.83328015, 0, 1, 0, -0.83328015, 0, -0.55285066, 3.007548, 1e-45, -1.9953972)
 
 [node name="Shaman3" parent="ShamansContainer" unique_id=1505500024 instance=ExtResource("2_h2yge")]
-transform = Transform3D(-0.9998241, 0, -0.01875091, 0, 1, 0, 0.01875091, 0, -0.9998241, -0.06945413, 1e-45, -3.7033975)
+transform = Transform3D(-0.9999134, 0, -0.013158091, 0, 1, 0, 0.013158091, 0, -0.9999134, -0.06945413, 1e-45, -5.277978)
 
 [node name="MasksContainer" type="Node3D" parent="." unique_id=654119103]
 
@@ -278,7 +278,7 @@ transform = Transform3D(-0.94604933, 0.1498133, 0.28686315, 0, 0.8862704, -0.462
 assigned_shaman = NodePath("../../ShamansContainer/Shaman2")
 
 [node name="ModelContainer" parent="MasksContainer/Mask2" index="1" unique_id=1609231757]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.030860169, -0.8932487)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.016930552, -0.8932487)
 
 [node name="MaskClock" parent="MasksContainer/Mask2/ModelContainer" index="0" unique_id=1713705050 instance=ExtResource("11_efxa6")]
 
@@ -286,14 +286,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.030860169, -0.8932487)
 visible = false
 
 [node name="AnimationPlayer" parent="MasksContainer/Mask2" index="8" unique_id=791805540]
-speed_scale = 2.1666012
+speed_scale = 2.1366553
 
 [node name="Mask3" parent="MasksContainer" unique_id=835432512 node_paths=PackedStringArray("assigned_shaman") instance=ExtResource("3_1bvp3")]
-transform = Transform3D(-0.9998106, -0.0027738127, -0.0060002324, 0, 0.90754735, -0.4195488, 0.0066103423, -0.41953763, -0.90753186, -0.07148182, 1.0018739, -3.811516)
+transform = Transform3D(-0.9998138, -0.0021409108, -0.0053056157, 0, 0.92719877, -0.3741456, 0.0057211937, -0.3741373, -0.92718893, -0.070877016, 1.0018739, -5.386106)
 assigned_shaman = NodePath("../../ShamansContainer/Shaman3")
 
 [node name="ModelContainer" parent="MasksContainer/Mask3" index="1" unique_id=1609231757]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.030860052, -0.8932487)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.016930552, -0.8932487)
 
 [node name="MaskSwap" parent="MasksContainer/Mask3/ModelContainer" index="0" unique_id=937219786 instance=ExtResource("12_dg77c")]
 
@@ -301,7 +301,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.030860052, -0.8932487)
 visible = false
 
 [node name="AnimationPlayer" parent="MasksContainer/Mask3" index="8" unique_id=791805540]
-speed_scale = 1.909794
+speed_scale = 2.127309
 
 [node name="TotemsContainer" type="Node3D" parent="." unique_id=1981188701]
 

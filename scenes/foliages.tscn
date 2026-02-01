@@ -73,6 +73,9 @@ transform = Transform3D(1.29, 0, 0, 0, 1.29, 0, 0, 0, 1.29, -6.021388, 4.7683716
 [node name="SM_PalmTree_var4" parent="Hugo" unique_id=1453839851 instance=ExtResource("3_g0vj2")]
 transform = Transform3D(2.07, 0, 0, 0, 2.07, 0, 0, 0, 2.07, 9.529147, 4.7683716e-07, -5.7934394)
 
+[node name="SM_PalmTree_var17" parent="Hugo" unique_id=1819802250 instance=ExtResource("3_g0vj2")]
+transform = Transform3D(2.07, 0, 0, 0, 2.07, 0, 0, 0, 2.07, 0.5677571, 0, -25.516722)
+
 [node name="SM_PalmTree_var13" parent="Hugo" unique_id=2080390655 instance=ExtResource("3_g0vj2")]
 transform = Transform3D(2.07, 0, 0, 0, 2.07, 0, 0, 0, 2.07, 9.529147, 4.7683716e-07, -5.7934394)
 
@@ -84,6 +87,12 @@ transform = Transform3D(-0.10858862, 0, 1.8918862, 0, 1.895, 0, -1.8918862, 0, -
 
 [node name="SM_PalmTree_var11" parent="Hugo" unique_id=1646715445 instance=ExtResource("3_g0vj2")]
 transform = Transform3D(-1.49165, 0, 1.1687622, 0, 1.8949997, 0, -1.1687622, 0, -1.49165, -4.9905415, 4.7683716e-07, -28.337433)
+
+[node name="SM_PalmTree_var15" parent="Hugo" unique_id=957469133 instance=ExtResource("3_g0vj2")]
+transform = Transform3D(1.4483963, 0, 1.221955, 0, 1.895, 0, -1.221955, 0, 1.4483963, 7.869155, 4.7683716e-07, -22.608917)
+
+[node name="SM_PalmTree_var16" parent="Hugo" unique_id=351115786 instance=ExtResource("3_g0vj2")]
+transform = Transform3D(1.8930087, 0, -0.086854815, 0, 1.8950002, 0, 0.086854815, 0, 1.8930087, -5.102682, 4.7683716e-07, -20.99754)
 
 [node name="SM_PalmTree_var12" parent="Hugo" unique_id=454543618 instance=ExtResource("3_g0vj2")]
 transform = Transform3D(-1.49165, 0, 1.1687622, 0, 1.8949997, 0, -1.1687622, 0, -1.49165, -17.837288, 4.7683716e-07, -28.300055)

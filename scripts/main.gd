@@ -180,6 +180,9 @@ func load_level(level_resource: LevelResource):
 	fire_burst_audio.play()
 	
 	await get_tree().create_timer(1).timeout
+	
+	camera_3d.shake(2.0 + shamans.size() * 0.1, 0.02)
+	
 	for shaman in shamans:
 		get_tree().create_tween().tween_property(shaman, "position:x", 0.0, 0.5)
 		get_tree().create_tween().tween_property(shaman, "position:z", 0.0, 0.5)
@@ -187,6 +190,7 @@ func load_level(level_resource: LevelResource):
 		await get_tree().create_timer(0.1).timeout
 		
 	await get_tree().create_timer(0.5).timeout
+	
 	
 	get_tree().create_tween().tween_property(fire_particles.process_material, "scale_max", 4.0, 0.5)
 	get_tree().create_tween().tween_property(fire_particles.process_material, "emission_sphere_radius", 1.0, 0.5)
@@ -243,6 +247,7 @@ func end_level():
 			shaman.assigned_mask.play_is_valid_audio()
 			shaman.assigned_mask.model_container.scale = Vector3.ONE * 1.5
 			shaman.assigned_mask.click_wobble()
+			camera_3d.shake(shaman_anim_duration, 0.02)
 			await get_tree().create_timer(shaman_anim_duration).timeout
 			
 	rune_label.text = ""
