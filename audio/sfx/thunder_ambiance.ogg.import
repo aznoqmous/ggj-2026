@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/thunder_ambiance.ogg-cebe8fd72c2a7ce130385df1
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

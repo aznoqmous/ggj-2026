@@ -34,6 +34,11 @@ var is_end_level := false
 
 @onready var level_complete_audio: AudioStreamPlayer3D = $Audios/LevelCompleteAudio
 @onready var fire_burst_audio: AudioStreamPlayer3D = $Audios/FireBurstAudio
+@onready var end_game_control: Control = $EndGameLayer/EndGameControl
+@onready var thunder_amb_audio: AudioStreamPlayer = $EndGameLayer/ThunderAmbAudio
+@onready var thunder_appear_audio: AudioStreamPlayer = $EndGameLayer/ThunderAppearAudio
+@onready var rain_particles: GPUParticles3D = $WorldEnvironment/RainParticles
+@onready var shamana_audio: AudioStreamPlayer = $EndGameLayer/ShamanaAudio
 
 func _ready():
 	camera_container.global_position.x = 20.0
@@ -47,6 +52,7 @@ func _ready():
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_right"): next_level()
+	if event.is_action_pressed("ui_down"): end_game()
 	if event.is_action_pressed("ui_left"):
 		current_level_index = clamp(current_level_index - 1, 0, levels.size() - 1)
 		load_level(levels[current_level_index])
@@ -277,10 +283,24 @@ func end_level():
 	
 
 func next_level():
-	if current_level_index + 1 >= levels.size(): return end_game()
+	if current_level_index + 1 >= levels.size(): return await end_game()
 	current_level_index = (current_level_index + 1) % levels.size()
 	load_level(levels[current_level_index])
+	rain_particles.amount += 50.0
 
 func end_game():
 	print("end game")
-	pass
+	is_animating = true
+	
+	thunder_amb_audio.play()
+	thunder_appear_audio.play()
+	camera_3d.shake(5.0)
+	await get_tree().create_timer(3.0).timeout
+	
+	get_tree().create_tween().tween_property(fire_particles.process_material, "scale_max", 100.0, 0.5)
+	get_tree().create_tween().tween_property(fire_particles.process_material, "emission_sphere_radius", 20.0, 0.5)
+	fire_burst_audio.play()
+	
+	await get_tree().create_timer(1).timeout
+	get_tree().create_tween().tween_property(end_game_control, "modulate:a", 1, 2.0)
+	shamana_audio.play()

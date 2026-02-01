@@ -34,6 +34,11 @@
 [ext_resource type="Texture2D" uid="uid://d1lcvs2s2njhj" path="res://models/TextureHerb/N_Herbs.png" id="27_qsp4k"]
 [ext_resource type="PackedScene" uid="uid://dcr3n7ykrrr03" path="res://scenes/foliages/sm_mask_low.tscn" id="30_seu75"]
 [ext_resource type="FontFile" uid="uid://dwbstqo1ojmx5" path="res://NotoSansSymbols2-Regular.ttf" id="32_htxhm"]
+[ext_resource type="FontFile" uid="uid://be57tuuupr4a4" path="res://Gaegu-Bold.ttf" id="35_0rl1p"]
+[ext_resource type="Texture2D" uid="uid://dmlsk1joah17q" path="res://sprites/logo_white.png" id="36_b1qrp"]
+[ext_resource type="AudioStream" uid="uid://b5hc1h8pntb33" path="res://audio/sfx/thunder_ambiance.ogg" id="36_facbu"]
+[ext_resource type="AudioStream" uid="uid://cxxightws3r32" path="res://audio/sfx/thunder_appear.ogg" id="37_b1qrp"]
+[ext_resource type="AudioStream" uid="uid://d2vxu3lt3lp65" path="res://audio/sfx/Shamanamania.wav" id="39_come4"]
 
 [sub_resource type="Environment" id="Environment_dg77c"]
 background_mode = 2
@@ -45,7 +50,8 @@ glow_bloom = 0.4
 fog_enabled = true
 fog_light_color = Color(0, 0, 0, 1)
 fog_light_energy = 0.26
-fog_density = 0.0422
+fog_density = 0.0694
+fog_height_density = -0.3867
 
 [sub_resource type="Gradient" id="Gradient_5vw27"]
 offsets = PackedFloat32Array(0, 0.20366132, 0.49199083, 0.73913044, 1)
@@ -159,11 +165,54 @@ uv1_scale = Vector3(10, 10, 10)
 [sub_resource type="PlaneMesh" id="PlaneMesh_1bvp3"]
 size = Vector2(100, 100)
 
+[sub_resource type="Gradient" id="Gradient_facbu"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_b1qrp"]
+gradient = SubResource("Gradient_facbu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_facbu"]
+emission_shape = 3
+emission_box_extents = Vector3(10, 0, 10)
+direction = Vector3(0, -10, 0)
+spread = 0.0
+gravity = Vector3(0, -10, 0)
+color_ramp = SubResource("GradientTexture1D_b1qrp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b1qrp"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.5019608, 0.5019608, 0.5019608, 0.5411765)
+billboard_mode = 2
+billboard_keep_scale = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_come4"]
+material = SubResource("StandardMaterial3D_b1qrp")
+size = Vector2(0.01, 4)
+orientation = 2
+
 [sub_resource type="LabelSettings" id="LabelSettings_jq2sk"]
 font = ExtResource("32_htxhm")
 font_size = 56
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4k2k6"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_ok6jj"]
+font = ExtResource("35_0rl1p")
+font_size = 40
 
 [node name="Main" type="Node3D" unique_id=906742551 node_paths=PackedStringArray("rune")]
 script = ExtResource("1_1bvp3")
@@ -256,6 +305,13 @@ material = SubResource("StandardMaterial3D_jq2sk")
 material_override = SubResource("StandardMaterial3D_a6jrf")
 mesh = SubResource("PlaneMesh_1bvp3")
 
+[node name="RainParticles" type="GPUParticles3D" parent="WorldEnvironment" unique_id=1066268738]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.969562, -3.2799664)
+amount = 1
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_facbu")
+draw_pass_1 = SubResource("PlaneMesh_come4")
+
 [node name="ShamansContainer" type="Node3D" parent="." unique_id=1287725843]
 
 [node name="Shaman" parent="ShamansContainer" unique_id=1026160748 instance=ExtResource("2_h2yge")]
@@ -278,7 +334,7 @@ transform = Transform3D(-0.94604933, 0.1498133, 0.28686315, 0, 0.8862704, -0.462
 assigned_shaman = NodePath("../../ShamansContainer/Shaman2")
 
 [node name="ModelContainer" parent="MasksContainer/Mask2" index="1" unique_id=1609231757]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.016930552, -0.8932487)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00047269624, -0.8932487)
 
 [node name="MaskClock" parent="MasksContainer/Mask2/ModelContainer" index="0" unique_id=1713705050 instance=ExtResource("11_efxa6")]
 
@@ -293,7 +349,7 @@ transform = Transform3D(-0.9998138, -0.0021409108, -0.0053056157, 0, 0.92719877,
 assigned_shaman = NodePath("../../ShamansContainer/Shaman3")
 
 [node name="ModelContainer" parent="MasksContainer/Mask3" index="1" unique_id=1609231757]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.016930552, -0.8932487)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00047830836, -0.8932487)
 
 [node name="MaskSwap" parent="MasksContainer/Mask3/ModelContainer" index="0" unique_id=937219786 instance=ExtResource("12_dg77c")]
 
@@ -359,6 +415,83 @@ grow_vertical = 2
 label_settings = SubResource("LabelSettings_jq2sk")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="EndGameLayer" type="CanvasLayer" parent="." unique_id=853684541]
+
+[node name="EndGameControl" type="Control" parent="EndGameLayer" unique_id=887029323]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="EndGamePanel" type="Panel" parent="EndGameLayer/EndGameControl" unique_id=1870428413]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4k2k6")
+
+[node name="Label" type="Label" parent="EndGameLayer/EndGameControl" unique_id=1915091620]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -177.0
+offset_top = -123.0
+offset_right = 177.0
+offset_bottom = 384.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Gorglomux 
+⎔⎔ ⎔▽ 
+aznoqmous
+▽▽▽ ▽⎔▽ ▽⎔⎔ 
+AKtomik
+⎔⎔ ▽⎔▽ 
+Zyar
+○○
+Zouavie
+○○"
+label_settings = SubResource("LabelSettings_ok6jj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="EndGameLayer/EndGameControl" unique_id=1418357271]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -480.0
+offset_right = 240.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("36_b1qrp")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ThunderAmbAudio" type="AudioStreamPlayer" parent="EndGameLayer" unique_id=1245963256]
+stream = ExtResource("36_facbu")
+
+[node name="ThunderAppearAudio" type="AudioStreamPlayer" parent="EndGameLayer" unique_id=765729152]
+stream = ExtResource("37_b1qrp")
+
+[node name="ShamanaAudio" type="AudioStreamPlayer" parent="EndGameLayer" unique_id=1153281540]
+stream = ExtResource("39_come4")
 
 [editable path="MasksContainer/Mask2"]
 [editable path="MasksContainer/Mask3"]
