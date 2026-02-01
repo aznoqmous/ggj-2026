@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://dsorqsd0e6gp8" path="res://scenes/shaman.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://bf01jl6xk7ctv" path="res://scenes/mask.tscn" id="3_1bvp3"]
 [ext_resource type="Script" uid="uid://cr7j2lefxfntf" path="res://scripts/resources/level_resource.gd" id="4_7mycd"]
-[ext_resource type="Resource" path="res://resources/levels/level_10-1.tres" id="5_d13ii"]
 [ext_resource type="Resource" uid="uid://cdlagddcwbyup" path="res://resources/levels/level_4-2.tres" id="6_cegan"]
 [ext_resource type="Script" uid="uid://phkh2o26tdnn" path="res://scripts/main_camera.gd" id="7_4c57u"]
 [ext_resource type="Resource" path="res://resources/levels/level_5-1.tres" id="7_82xsv"]
@@ -15,12 +14,12 @@
 [ext_resource type="PackedScene" uid="uid://xmjk6prny0i5" path="res://scenes/masks/mask_clock.tscn" id="11_efxa6"]
 [ext_resource type="Resource" path="res://resources/levels/level_6-4.tres" id="12_0odxb"]
 [ext_resource type="PackedScene" uid="uid://bbmyiyfx1lg4m" path="res://scenes/masks/mask_swap.tscn" id="12_dg77c"]
+[ext_resource type="Resource" path="res://resources/levels/level_7-3.tres" id="12_kq58d"]
 [ext_resource type="Resource" path="res://resources/levels/level_6-5.tres" id="13_1u8w0"]
+[ext_resource type="Resource" path="res://resources/levels/level_8-3.tres" id="13_seu75"]
 [ext_resource type="Resource" path="res://resources/levels/level_7-1.tres" id="14_1u8w0"]
-[ext_resource type="Resource" path="res://resources/levels/level_8-1.tres" id="15_0odxb"]
+[ext_resource type="Resource" path="res://resources/levels/level_9-2.tres" id="14_htxhm"]
 [ext_resource type="AudioStream" uid="uid://cr37g27g88t28" path="res://audio/sfx/level_complete.ogg" id="16_kq58d"]
-[ext_resource type="Resource" path="res://resources/levels/level_8-2.tres" id="16_lswn8"]
-[ext_resource type="Resource" path="res://resources/levels/level_9-1.tres" id="17_a6jrf"]
 [ext_resource type="AudioStream" uid="uid://c0x8luhy4grtw" path="res://audio/sfx/fire_loop_crackle.wav" id="17_seu75"]
 [ext_resource type="Script" uid="uid://bfsvapxkw13np" path="res://scripts/runes.gd" id="25_0odxb"]
 [ext_resource type="Texture2D" uid="uid://dfjm7upnb7do" path="res://models/TextureHerb/BC_Herbs.png" id="25_lswn8"]
@@ -245,7 +244,7 @@ size = Vector2(100, 100)
 script = ExtResource("1_1bvp3")
 mask_scene = ExtResource("3_1bvp3")
 shaman_scene = ExtResource("2_h2yge")
-levels = Array[ExtResource("4_7mycd")]([ExtResource("6_cegan"), ExtResource("7_82xsv"), ExtResource("8_getpj"), ExtResource("11_1u8w0"), ExtResource("12_0odxb"), ExtResource("13_1u8w0"), ExtResource("14_1u8w0"), ExtResource("15_0odxb"), ExtResource("16_lswn8"), ExtResource("17_a6jrf"), ExtResource("5_d13ii")])
+levels = Array[ExtResource("4_7mycd")]([ExtResource("6_cegan"), ExtResource("7_82xsv"), ExtResource("8_getpj"), ExtResource("11_1u8w0"), ExtResource("12_0odxb"), ExtResource("13_1u8w0"), ExtResource("14_1u8w0"), ExtResource("12_kq58d"), ExtResource("13_seu75"), ExtResource("14_htxhm")])
 
 [node name="Audios" type="Node3D" parent="." unique_id=1942328178]
 
@@ -303,12 +302,14 @@ process_material = SubResource("ParticleProcessMaterial_ycdy4")
 draw_pass_1 = SubResource("QuadMesh_vivmo")
 
 [node name="CampfireCSG" type="CSGCylinder3D" parent="WorldEnvironment/Campfire" unique_id=78306363]
+visible = false
 radius = 4.0
 height = 0.001
 sides = 38
 
 [node name="LevelsCSG" type="CSGBox3D" parent="WorldEnvironment/Campfire" unique_id=832121726]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02276051, 2.1826773, -7.914551)
+visible = false
 size = Vector3(14.770508, 5.3653564, 2.0343018)
 material = SubResource("StandardMaterial3D_jq2sk")
 
@@ -744,7 +745,7 @@ transform = Transform3D(-0.946059, 0.14981519, 0.28686738, 0, 0.8862816, -0.4628
 assigned_shaman = NodePath("../../ShamansContainer/Shaman2")
 
 [node name="ModelContainer" parent="MasksContainer/Mask2" index="1" unique_id=1609231757]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.031097015, -0.8932487)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.031025449, -0.8932487)
 
 [node name="MaskClock" parent="MasksContainer/Mask2/ModelContainer" index="0" unique_id=1713705050 instance=ExtResource("11_efxa6")]
 
@@ -759,7 +760,7 @@ transform = Transform3D(-0.9998273, -0.0027739264, -0.0060004187, 0, 0.9075845, 
 assigned_shaman = NodePath("../../ShamansContainer/Shaman3")
 
 [node name="ModelContainer" parent="MasksContainer/Mask3" index="1" unique_id=1609231757]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.031098569, -0.8932487)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.031022556, -0.8932487)
 
 [node name="MaskSwap" parent="MasksContainer/Mask3/ModelContainer" index="0" unique_id=937219786 instance=ExtResource("12_dg77c")]
 
@@ -772,22 +773,31 @@ speed_scale = 2.1618934
 [node name="TotemsContainer" type="Node3D" parent="." unique_id=1981188701]
 
 [node name="SM_Totem01" parent="TotemsContainer" unique_id=1059491425 instance=ExtResource("30_jq2sk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.883275, 2.3841858e-07, -7.9924784)
+transform = Transform3D(0.6250373, 0, 0.15922707, 0, 0.6449999, 0, -0.15922707, 0, 0.6250373, -5.5282106, 2.3841858e-07, -9.602752)
 
 [node name="SM_Totem02" parent="TotemsContainer" unique_id=1935059622 instance=ExtResource("31_4k2k6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.897171, 2.3841858e-07, -8.17316)
+transform = Transform3D(0.6250373, 0, 0.15922707, 0, 0.6449999, 0, -0.15922707, 0, 0.6250373, -4.6172304, 2.3841858e-07, -10.021275)
 
 [node name="SM_Totem03" parent="TotemsContainer" unique_id=696602004 instance=ExtResource("32_0rl1p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6376147, -1.0057261, -10.055934)
+transform = Transform3D(0.6250373, 0, 0.15922707, 0, 0.6449999, 0, -0.15922707, 0, 0.6250373, -3.8614454, -1.0057261, -12.156716)
 
 [node name="SM_Totem04" parent="TotemsContainer" unique_id=416931585 instance=ExtResource("30_jq2sk")]
-transform = Transform3D(0.99704206, 0.076858245, 0, -0.076858245, 0.99704206, 0, 0, 0, 1, 0.492764, 2.3841858e-07, -8.095301)
+transform = Transform3D(0.6231885, 0.048039272, 0.15922707, -0.049573563, 0.64309204, 0, -0.15875608, -0.012237913, 0.6250373, -1.9861815, 2.3841858e-07, -9.64695)
 
 [node name="SM_Totem05" parent="TotemsContainer" unique_id=639583354 instance=ExtResource("31_4k2k6")]
-transform = Transform3D(0.951342, -0.30813712, 0, 0.30813712, 0.951342, 0, 0, 0, 1, 2.4086304, 2.3841858e-07, -8.275982)
+transform = Transform3D(0.59462434, -0.19259724, 0.15922709, 0.19874845, 0.6136156, 0, -0.15147941, 0.04906378, 0.6250374, -0.17421436, 2.3841858e-07, -10.294996)
 
 [node name="SM_Totem06" parent="TotemsContainer" unique_id=73177262 instance=ExtResource("32_0rl1p")]
-transform = Transform3D(0.99999845, 0.0017627816, 0, -0.0017627816, 0.99999845, 0, 0, 0, 1, 2.9035182, -1.0057261, -7.5941486)
+transform = Transform3D(0.6250364, 0.0011018043, 0.15922709, -0.001136994, 0.64499897, 0, -0.15922683, -0.00028068255, 0.6250374, 0.47367644, -1.0057261, -9.756435)
+
+[node name="SM_Totem07" parent="TotemsContainer" unique_id=1816871849 instance=ExtResource("30_jq2sk")]
+transform = Transform3D(0.5964565, 0.045978606, -0.09028096, -0.04649924, 0.60321045, 0, 0.09001391, 0.006938836, 0.598226, 2.757059, 2.3841858e-07, -10.27732)
+
+[node name="SM_Totem08" parent="TotemsContainer" unique_id=1582318273 instance=ExtResource("31_4k2k6")]
+transform = Transform3D(0.56911755, -0.18433565, -0.09028096, 0.18642296, 0.57556194, 0, 0.085888065, -0.027818913, 0.598226, 4.6784363, 2.3841858e-07, -10.170083)
+
+[node name="SM_Totem09" parent="TotemsContainer" unique_id=217703541 instance=ExtResource("32_0rl1p")]
+transform = Transform3D(0.5982251, 0.0010545419, -0.09028096, -0.001066483, 0.60499907, 0, 0.09028081, 0.00015914561, 0.598226, 5.0660367, -1.0057261, -9.422035)
 
 [editable path="MasksContainer/Mask2"]
 [editable path="MasksContainer/Mask3"]
