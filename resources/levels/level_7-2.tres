@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LevelResource" format=3 uid="uid://cdhs7vpm0yeh3"]
+
+[ext_resource type="Script" uid="uid://cr7j2lefxfntf" path="res://scripts/resources/level_resource.gd" id="1_i61mi"]
+[ext_resource type="Script" uid="uid://ctm3257qxoewp" path="res://scripts/resources/mask_resource.gd" id="2_lnv27"]
+[ext_resource type="Resource" uid="uid://kt34w34jw13b" path="res://resources/masks/mask_clock.tres" id="3_jp485"]
+[ext_resource type="Resource" uid="uid://ny5tath1j1yy" path="res://resources/masks/mask_none.tres" id="4_n064c"]
+[ext_resource type="Resource" uid="uid://d2adtaq3e6wsf" path="res://resources/masks/mask_swap.tres" id="5_ukwla"]
+
+[resource]
+script = ExtResource("1_i61mi")
+shamans_needed_masks = Array[ExtResource("2_lnv27")]([ExtResource("3_jp485"), ExtResource("5_ukwla"), ExtResource("5_ukwla"), ExtResource("5_ukwla"), ExtResource("3_jp485"), ExtResource("4_n064c"), ExtResource("3_jp485")])
+shamans_starting_masks = Array[ExtResource("2_lnv27")]([ExtResource("3_jp485"), ExtResource("3_jp485"), ExtResource("5_ukwla"), ExtResource("3_jp485"), ExtResource("5_ukwla"), ExtResource("5_ukwla"), ExtResource("4_n064c")])
+metadata/_custom_type_script = "uid://cr7j2lefxfntf"
