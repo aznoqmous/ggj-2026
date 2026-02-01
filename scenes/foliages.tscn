@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://dqijede5bw86w" path="res://scenes/foliages/sm_rock_04.tscn" id="9_55m0y"]
 [ext_resource type="PackedScene" uid="uid://c4ipqhyqax8dl" path="res://scenes/foliages/sm_rock_05.tscn" id="10_64fin"]
 [ext_resource type="PackedScene" uid="uid://caf4fy802qqof" path="res://scenes/foliages/sm_rock_06.tscn" id="11_n421f"]
-[ext_resource type="PackedScene" uid="uid://dcr3n7ykrrr03" path="res://scenes/foliages/sm_mask_low.tscn" id="12_ivf7a"]
 
 [node name="Foliages" type="Node3D" unique_id=1366835970]
 
@@ -388,30 +387,3 @@ transform = Transform3D(0.99265003, 0, -0.12102046, 0, 1, 0, 0.12102046, 0, 0.99
 
 [node name="SM_Rock09" parent="Rocks" unique_id=772996716 instance=ExtResource("11_n421f")]
 transform = Transform3D(-0.88896775, 0.4039872, 0.21570957, 0.4515575, 0.85174614, 0.26575264, -0.07636917, 0.33365083, -0.9395983, -6.4748793, -0.58634615, 2.730503)
-
-[node name="SM_Mask_low" parent="." unique_id=863304213 instance=ExtResource("12_ivf7a")]
-transform = Transform3D(0.6880886, -0.38558626, 0.6147009, 2.2351742e-08, 0.8471312, 0.5313839, -0.7256267, -0.36563915, 0.5829015, -5.04259, -0.15720843, -5.4227123)
-
-[node name="SM_Mask_low6" parent="." unique_id=1434577957 instance=ExtResource("12_ivf7a")]
-transform = Transform3D(0.9959372, -0.08993301, -0.0046460927, 0.0760257, 0.81203055, 0.5786418, -0.048266277, -0.5766439, 0.8155686, -3.4698675, -0.1824634, -6.7511187)
-
-[node name="SM_Mask_low7" parent="." unique_id=832088442 instance=ExtResource("12_ivf7a")]
-transform = Transform3D(0.78689617, -0.36282113, 0.4991547, 0.097806364, 0.87199634, 0.47964174, -0.60928535, -0.32860762, 0.72165674, -5.0469575, 0.5683538, -7.725284)
-
-[node name="SM_Mask_low2" parent="." unique_id=926638482 instance=ExtResource("12_ivf7a")]
-transform = Transform3D(0.9994697, -0.014403371, 0.029203292, 0, 0.8968496, 0.44233564, -0.032562084, -0.4421011, 0.896374, -1.6272119, -0.2231302, -7.1713123)
-
-[node name="SM_Mask_low8" parent="." unique_id=639985508 instance=ExtResource("12_ivf7a")]
-transform = Transform3D(0.94056404, -0.008141898, -0.3395186, 0.09226974, 0.968235, 0.23239473, 0.3268417, -0.24990945, 0.9114383, 0.2814597, 0.6529988, -8.117342)
-
-[node name="SM_Mask_low9" parent="." unique_id=746723056 instance=ExtResource("12_ivf7a")]
-transform = Transform3D(0.7918531, -0.25217086, 0.55621827, -0.031242084, 0.8928513, 0.4492666, -0.60991216, -0.37313056, 0.69912875, 1.9337204, -0.35255134, -7.250652)
-
-[node name="SM_Mask_low3" parent="." unique_id=279344827 instance=ExtResource("12_ivf7a")]
-transform = Transform3D(0.8920106, 0.21374574, -0.39828354, 0, 0.8811302, 0.47287375, 0.45201436, -0.42180842, 0.7859775, 3.0917747, -0.18526593, -7.2207994)
-
-[node name="SM_Mask_low4" parent="." unique_id=1223229564 instance=ExtResource("12_ivf7a")]
-transform = Transform3D(0.53876436, 0.50503683, -0.6742929, 0.22497925, 0.68506855, 0.6928676, 0.8118604, -0.52499425, 0.2554677, 4.4332085, -0.23795046, -5.617008)
-
-[node name="SM_Mask_low5" parent="." unique_id=161237679 instance=ExtResource("12_ivf7a")]
-transform = Transform3D(0.98766583, -0.06894004, 0.14058372, -0.060175832, 0.66177213, 0.7472862, -0.14455223, -0.7465286, 0.64946127, 5.568179, 0.7085115, -8.980697)

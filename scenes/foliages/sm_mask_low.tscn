@@ -1,9 +1,11 @@
 [gd_scene format=4 uid="uid://dcr3n7ykrrr03"]
 
+[ext_resource type="Script" uid="uid://btknkcbyun4x6" path="res://scripts/totem.gd" id="1_6ni5r"]
 [ext_resource type="Texture2D" uid="uid://c8p5gfqxtmbpt" path="res://models/TikiHead/M_TikiTotem_BaseColor.png" id="1_pqo0e"]
 [ext_resource type="Texture2D" uid="uid://c0wny8858p8jm" path="res://models/TikiHead/M_TikiTotem_OcclusionRoughnessMetallic.png" id="2_6ni5r"]
 [ext_resource type="Texture2D" uid="uid://bwebb6b0sm6am" path="res://models/TikiHead/M_TikiTotem_Emissive.png" id="3_xfb8t"]
 [ext_resource type="Texture2D" uid="uid://dbf1qkavxhi1x" path="res://models/TikiHead/M_TikiTotem_Normal.png" id="4_y1vcr"]
+[ext_resource type="AudioStream" uid="uid://blxwk8vtu452d" path="res://audio/sfx/tiki_active.ogg" id="6_xfb8t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mj36d"]
 resource_local_to_scene = true
@@ -16,7 +18,7 @@ roughness_texture = ExtResource("2_6ni5r")
 roughness_texture_channel = 1
 emission_enabled = true
 emission = Color(1, 0, 0, 1)
-emission_energy_multiplier = 16.0
+emission_energy_multiplier = 0.0
 emission_operator = 1
 emission_texture = ExtResource("3_xfb8t")
 normal_enabled = true
@@ -58,9 +60,14 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_288pd")
 
-[node name="SM_Mask_low" type="Node3D" unique_id=863304213]
+[node name="SM_Mask_low" type="Node3D" unique_id=863304213 node_paths=PackedStringArray("mesh")]
+script = ExtResource("1_6ni5r")
+mesh = NodePath("Cylinder_002")
 
 [node name="Cylinder_002" type="MeshInstance3D" parent="." unique_id=696161957]
 transform = Transform3D(100.00001, 0, 0, 0, -4.3711393e-06, 100.00001, 0, -100.00001, -4.3711393e-06, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_mj36d")
 mesh = SubResource("ArrayMesh_71x3u")
+
+[node name="ActivatedAudio" type="AudioStreamPlayer3D" parent="." unique_id=2042760199]
+stream = ExtResource("6_xfb8t")

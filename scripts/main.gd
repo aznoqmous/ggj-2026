@@ -4,6 +4,7 @@ class_name Main
 @export var mask_scene : PackedScene
 @export var shaman_scene : PackedScene
 @export var shaman_circle_radius := 3.0
+@export var mask_resources : Array[MaskResource]
 
 @onready var camera_target: Node3D = $CameraTarget
 @onready var camera_container: Node3D = $CameraContainer
@@ -251,7 +252,11 @@ func end_level():
 	get_tree().create_tween().tween_property(camera_3d, "zoom", 5.0, 0.5)
 	
 	await get_tree().create_timer(0.5).timeout
-	totems_container.get_children()[current_level_index].is_active = true
+	var totem := totems_container.get_children()[current_level_index] as Totem
+	totem.mesh.material_override.set("emission", mask_resources[floor(current_level_index / 3)].color)
+	totem.is_active = true
+	totem.activated_audio.play()
+	
 	level_complete_audio.play()
 	
 	await get_tree().create_timer(1.5).timeout
@@ -267,5 +272,10 @@ func end_level():
 	
 
 func next_level():
+	if current_level_index + 1 >= levels.size(): return end_game()
 	current_level_index = (current_level_index + 1) % levels.size()
 	load_level(levels[current_level_index])
+
+func end_game():
+	print("end game")
+	pass

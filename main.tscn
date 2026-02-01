@@ -3,10 +3,14 @@
 [ext_resource type="Script" uid="uid://cjof8gvfeji7b" path="res://scripts/main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dsorqsd0e6gp8" path="res://scenes/shaman.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://bf01jl6xk7ctv" path="res://scenes/mask.tscn" id="3_1bvp3"]
+[ext_resource type="Script" uid="uid://ctm3257qxoewp" path="res://scripts/resources/mask_resource.gd" id="4_0rl1p"]
 [ext_resource type="Script" uid="uid://cr7j2lefxfntf" path="res://scripts/resources/level_resource.gd" id="4_7mycd"]
+[ext_resource type="Resource" uid="uid://ny5tath1j1yy" path="res://resources/masks/mask_none.tres" id="5_ok6jj"]
 [ext_resource type="Resource" uid="uid://cdlagddcwbyup" path="res://resources/levels/level_4-2.tres" id="6_cegan"]
+[ext_resource type="Resource" uid="uid://d2adtaq3e6wsf" path="res://resources/masks/mask_swap.tres" id="6_facbu"]
 [ext_resource type="Script" uid="uid://phkh2o26tdnn" path="res://scripts/main_camera.gd" id="7_4c57u"]
 [ext_resource type="Resource" path="res://resources/levels/level_5-1.tres" id="7_82xsv"]
+[ext_resource type="Resource" uid="uid://kt34w34jw13b" path="res://resources/masks/mask_clock.tres" id="7_b1qrp"]
 [ext_resource type="Texture2D" uid="uid://da22mvr2858k0" path="res://sprites/fire-spritesheet.png" id="8_5vw27"]
 [ext_resource type="Resource" uid="uid://bcskxfvsimno" path="res://resources/levels/level_5-2.tres" id="8_getpj"]
 [ext_resource type="Texture2D" uid="uid://dcbwll7yw8ds7" path="res://sprites/particle.png" id="9_kek77"]
@@ -17,20 +21,18 @@
 [ext_resource type="Resource" path="res://resources/levels/level_7-3.tres" id="12_kq58d"]
 [ext_resource type="Resource" path="res://resources/levels/level_6-5.tres" id="13_1u8w0"]
 [ext_resource type="Resource" path="res://resources/levels/level_8-3.tres" id="13_seu75"]
-[ext_resource type="Resource" path="res://resources/levels/level_7-1.tres" id="14_1u8w0"]
 [ext_resource type="Resource" uid="uid://cq4s5k5fvg1mn" path="res://resources/levels/level_9-2.tres" id="14_htxhm"]
 [ext_resource type="AudioStream" uid="uid://cr37g27g88t28" path="res://audio/sfx/level_complete.ogg" id="16_kq58d"]
 [ext_resource type="AudioStream" uid="uid://b6vms15h6lod6" path="res://audio/ggj-2026.wav" id="17_htxhm"]
 [ext_resource type="AudioStream" uid="uid://dtkxrm5fvt6o5" path="res://audio/sfx/fire_burst_long.ogg" id="17_jq2sk"]
 [ext_resource type="AudioStream" uid="uid://c0x8luhy4grtw" path="res://audio/sfx/fire_loop_crackle.wav" id="17_seu75"]
 [ext_resource type="PackedScene" uid="uid://cq1csbvp2p21r" path="res://scenes/foliages.tscn" id="20_seu75"]
+[ext_resource type="PackedScene" uid="uid://cg767cgo8cwdf" path="res://scenes/campfire_wood.tscn" id="22_jq2sk"]
 [ext_resource type="Script" uid="uid://bfsvapxkw13np" path="res://scripts/runes.gd" id="25_0odxb"]
 [ext_resource type="Texture2D" uid="uid://dfjm7upnb7do" path="res://models/TextureHerb/BC_Herbs.png" id="25_lswn8"]
 [ext_resource type="Texture2D" uid="uid://bjr0iu02lbklu" path="res://models/TextureHerb/ORM_Herbs.png" id="26_xuqvo"]
 [ext_resource type="Texture2D" uid="uid://d1lcvs2s2njhj" path="res://models/TextureHerb/N_Herbs.png" id="27_qsp4k"]
-[ext_resource type="PackedScene" uid="uid://b7cercnrqjym4" path="res://scenes/totems/totem_1.tscn" id="30_jq2sk"]
-[ext_resource type="PackedScene" uid="uid://mm7au23wm3ei" path="res://scenes/totems/totem_2.tscn" id="31_4k2k6"]
-[ext_resource type="PackedScene" uid="uid://cw5wjprlsrovg" path="res://scenes/totems/totem_3.tscn" id="32_0rl1p"]
+[ext_resource type="PackedScene" uid="uid://dcr3n7ykrrr03" path="res://scenes/foliages/sm_mask_low.tscn" id="30_seu75"]
 [ext_resource type="FontFile" uid="uid://dwbstqo1ojmx5" path="res://NotoSansSymbols2-Regular.ttf" id="32_htxhm"]
 
 [sub_resource type="Environment" id="Environment_dg77c"]
@@ -167,7 +169,8 @@ outline_color = Color(0, 0, 0, 1)
 script = ExtResource("1_1bvp3")
 mask_scene = ExtResource("3_1bvp3")
 shaman_scene = ExtResource("2_h2yge")
-levels = Array[ExtResource("4_7mycd")]([ExtResource("6_cegan"), ExtResource("7_82xsv"), ExtResource("8_getpj"), ExtResource("11_1u8w0"), ExtResource("12_0odxb"), ExtResource("13_1u8w0"), ExtResource("14_1u8w0"), ExtResource("12_kq58d"), ExtResource("13_seu75"), ExtResource("14_htxhm")])
+mask_resources = Array[ExtResource("4_0rl1p")]([ExtResource("5_ok6jj"), ExtResource("6_facbu"), ExtResource("7_b1qrp")])
+levels = Array[ExtResource("4_7mycd")]([ExtResource("6_cegan"), ExtResource("7_82xsv"), ExtResource("8_getpj"), ExtResource("11_1u8w0"), ExtResource("12_0odxb"), ExtResource("13_1u8w0"), ExtResource("12_kq58d"), ExtResource("13_seu75"), ExtResource("14_htxhm")])
 rune = NodePath("Rune")
 
 [node name="Audios" type="Node3D" parent="." unique_id=1942328178]
@@ -210,6 +213,9 @@ environment = SubResource("Environment_dg77c")
 
 [node name="Campfire" type="Node3D" parent="WorldEnvironment" unique_id=197369463]
 
+[node name="CampfireWood" parent="WorldEnvironment/Campfire" unique_id=202925541 instance=ExtResource("22_jq2sk")]
+transform = Transform3D(1, 0, 0, 0, 0.365, 0, 0, 0, 1, 0.011499405, -0.6409167, 0)
+
 [node name="OmniLight3D" type="OmniLight3D" parent="WorldEnvironment/Campfire" unique_id=595497951]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3878512, 0)
 light_color = Color(0.7381592, 1, 0.35546875, 1)
@@ -223,7 +229,7 @@ light_color = Color(0.39944857, 0.36470592, 1, 1)
 light_energy = 0.351
 
 [node name="FireParticles" type="GPUParticles3D" parent="WorldEnvironment/Campfire" unique_id=1394658753]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, -0.008229256, 0)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, -0.06430793, 0)
 amount = 100
 process_material = SubResource("ParticleProcessMaterial_272bh")
 draw_pass_1 = SubResource("QuadMesh_kek77")
@@ -272,7 +278,7 @@ transform = Transform3D(-0.94604933, 0.1498133, 0.28686315, 0, 0.8862704, -0.462
 assigned_shaman = NodePath("../../ShamansContainer/Shaman2")
 
 [node name="ModelContainer" parent="MasksContainer/Mask2" index="1" unique_id=1609231757]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01545119, -0.8932487)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.030860169, -0.8932487)
 
 [node name="MaskClock" parent="MasksContainer/Mask2/ModelContainer" index="0" unique_id=1713705050 instance=ExtResource("11_efxa6")]
 
@@ -280,14 +286,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01545119, -0.8932487)
 visible = false
 
 [node name="AnimationPlayer" parent="MasksContainer/Mask2" index="8" unique_id=791805540]
-speed_scale = 1.9011849
+speed_scale = 2.1666012
 
 [node name="Mask3" parent="MasksContainer" unique_id=835432512 node_paths=PackedStringArray("assigned_shaman") instance=ExtResource("3_1bvp3")]
 transform = Transform3D(-0.9998106, -0.0027738127, -0.0060002324, 0, 0.90754735, -0.4195488, 0.0066103423, -0.41953763, -0.90753186, -0.07148182, 1.0018739, -3.811516)
 assigned_shaman = NodePath("../../ShamansContainer/Shaman3")
 
 [node name="ModelContainer" parent="MasksContainer/Mask3" index="1" unique_id=1609231757]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01545119, -0.8932487)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.030860052, -0.8932487)
 
 [node name="MaskSwap" parent="MasksContainer/Mask3/ModelContainer" index="0" unique_id=937219786 instance=ExtResource("12_dg77c")]
 
@@ -295,36 +301,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01545119, -0.8932487)
 visible = false
 
 [node name="AnimationPlayer" parent="MasksContainer/Mask3" index="8" unique_id=791805540]
-speed_scale = 2.0098488
+speed_scale = 1.909794
 
 [node name="TotemsContainer" type="Node3D" parent="." unique_id=1981188701]
 
-[node name="SM_Totem01" parent="TotemsContainer" unique_id=1059491425 instance=ExtResource("30_jq2sk")]
-transform = Transform3D(0.6250373, 0, 0.15922707, 0, 0.6449999, 0, -0.15922707, 0, 0.6250373, -5.5282106, 2.3841858e-07, -9.602752)
+[node name="SM_Mask_low" parent="TotemsContainer" unique_id=863304213 instance=ExtResource("30_seu75")]
+transform = Transform3D(0.6880886, -0.38558626, 0.6147009, 2.2351742e-08, 0.8471312, 0.5313839, -0.7256267, -0.36563915, 0.5829015, -5.04259, -0.15720843, -5.4227123)
 
-[node name="SM_Totem02" parent="TotemsContainer" unique_id=1935059622 instance=ExtResource("31_4k2k6")]
-transform = Transform3D(0.6250373, 0, 0.15922707, 0, 0.6449999, 0, -0.15922707, 0, 0.6250373, -4.6172304, 2.3841858e-07, -10.021275)
+[node name="SM_Mask_low6" parent="TotemsContainer" unique_id=1892240352 instance=ExtResource("30_seu75")]
+transform = Transform3D(0.9959372, -0.08993301, -0.0046460927, 0.0760257, 0.81203055, 0.5786418, -0.048266277, -0.5766439, 0.8155686, -3.4698675, -0.1824634, -6.7511187)
 
-[node name="SM_Totem03" parent="TotemsContainer" unique_id=696602004 instance=ExtResource("32_0rl1p")]
-transform = Transform3D(0.6250373, 0, 0.15922707, 0, 0.6449999, 0, -0.15922707, 0, 0.6250373, -3.8614454, -1.0057261, -12.156716)
+[node name="SM_Mask_low7" parent="TotemsContainer" unique_id=1627343059 instance=ExtResource("30_seu75")]
+transform = Transform3D(0.78689617, -0.36282113, 0.4991547, 0.097806364, 0.87199634, 0.47964174, -0.60928535, -0.32860762, 0.72165674, -5.0469575, 0.5683538, -7.725284)
 
-[node name="SM_Totem04" parent="TotemsContainer" unique_id=416931585 instance=ExtResource("30_jq2sk")]
-transform = Transform3D(0.6231885, 0.048039272, 0.15922707, -0.049573563, 0.64309204, 0, -0.15875608, -0.012237913, 0.6250373, -1.9861815, 2.3841858e-07, -9.64695)
+[node name="SM_Mask_low2" parent="TotemsContainer" unique_id=1380988189 instance=ExtResource("30_seu75")]
+transform = Transform3D(0.9994697, -0.014403371, 0.029203292, 0, 0.8968496, 0.44233564, -0.032562084, -0.4421011, 0.896374, -1.6272119, -0.2231302, -7.1713123)
 
-[node name="SM_Totem05" parent="TotemsContainer" unique_id=639583354 instance=ExtResource("31_4k2k6")]
-transform = Transform3D(0.59462434, -0.19259724, 0.15922709, 0.19874845, 0.6136156, 0, -0.15147941, 0.04906378, 0.6250374, -0.17421436, 2.3841858e-07, -10.294996)
+[node name="SM_Mask_low8" parent="TotemsContainer" unique_id=221823877 instance=ExtResource("30_seu75")]
+transform = Transform3D(0.94056404, -0.008141898, -0.3395186, 0.09226974, 0.968235, 0.23239473, 0.3268417, -0.24990945, 0.9114383, 0.2814597, 0.6529988, -8.117342)
 
-[node name="SM_Totem06" parent="TotemsContainer" unique_id=73177262 instance=ExtResource("32_0rl1p")]
-transform = Transform3D(0.6250364, 0.0011018043, 0.15922709, -0.001136994, 0.64499897, 0, -0.15922683, -0.00028068255, 0.6250374, 0.47367644, -1.0057261, -9.756435)
+[node name="SM_Mask_low9" parent="TotemsContainer" unique_id=236736260 instance=ExtResource("30_seu75")]
+transform = Transform3D(0.7918531, -0.25217086, 0.55621827, -0.031242084, 0.8928513, 0.4492666, -0.60991216, -0.37313056, 0.69912875, 1.9337204, -0.35255134, -7.250652)
 
-[node name="SM_Totem07" parent="TotemsContainer" unique_id=1816871849 instance=ExtResource("30_jq2sk")]
-transform = Transform3D(0.5964565, 0.045978606, -0.09028096, -0.04649924, 0.60321045, 0, 0.09001391, 0.006938836, 0.598226, 2.757059, 2.3841858e-07, -10.27732)
+[node name="SM_Mask_low3" parent="TotemsContainer" unique_id=1370956814 instance=ExtResource("30_seu75")]
+transform = Transform3D(0.8920106, 0.21374574, -0.39828354, 0, 0.8811302, 0.47287375, 0.45201436, -0.42180842, 0.7859775, 3.0917747, -0.18526593, -7.2207994)
 
-[node name="SM_Totem08" parent="TotemsContainer" unique_id=1582318273 instance=ExtResource("31_4k2k6")]
-transform = Transform3D(0.56911755, -0.18433565, -0.09028096, 0.18642296, 0.57556194, 0, 0.085888065, -0.027818913, 0.598226, 4.6784363, 2.3841858e-07, -10.170083)
+[node name="SM_Mask_low4" parent="TotemsContainer" unique_id=1314461593 instance=ExtResource("30_seu75")]
+transform = Transform3D(0.53876436, 0.50503683, -0.6742929, 0.22497925, 0.68506855, 0.6928676, 0.8118604, -0.52499425, 0.2554677, 4.4332085, -0.23795046, -5.617008)
 
-[node name="SM_Totem09" parent="TotemsContainer" unique_id=217703541 instance=ExtResource("32_0rl1p")]
-transform = Transform3D(0.5982251, 0.0010545419, -0.09028096, -0.001066483, 0.60499907, 0, 0.09028081, 0.00015914561, 0.598226, 5.0660367, -1.0057261, -9.422035)
+[node name="SM_Mask_low5" parent="TotemsContainer" unique_id=326169582 instance=ExtResource("30_seu75")]
+transform = Transform3D(0.98766583, -0.06894004, 0.14058372, -0.060175832, 0.66177213, 0.7472862, -0.14455223, -0.7465286, 0.64946127, 5.568179, 0.7085115, -8.980697)
 
 [node name="RuneLayer" type="CanvasLayer" parent="." unique_id=58893181]
 

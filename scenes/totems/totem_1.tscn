@@ -63,4 +63,5 @@ mesh = NodePath("SM_Totem01")
 [node name="SM_Totem01" type="MeshInstance3D" parent="." unique_id=1513471481]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_ftkiu")
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_bu3k1")

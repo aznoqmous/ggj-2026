@@ -20,8 +20,8 @@ var is_valid : bool :
 	get: return assigned_mask and assigned_mask.mask_resource == needed_mask
 	
 func update_particles():
+	if not assigned_mask or not assigned_mask.mask_resource: return
 	correct_mask_particles.emitting = assigned_mask.mask_resource == needed_mask
-	if not assigned_mask.mask_resource: return
 	correct_mask_particles.draw_pass_1.material.set("emission", assigned_mask.mask_resource.color)
 
 func _ready():
