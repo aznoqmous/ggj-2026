@@ -6,26 +6,27 @@
 [ext_resource type="Script" uid="uid://cr7j2lefxfntf" path="res://scripts/resources/level_resource.gd" id="4_7mycd"]
 [ext_resource type="Resource" uid="uid://cdlagddcwbyup" path="res://resources/levels/level_4-2.tres" id="6_cegan"]
 [ext_resource type="Script" uid="uid://phkh2o26tdnn" path="res://scripts/main_camera.gd" id="7_4c57u"]
-[ext_resource type="Resource" uid="uid://bhbua45jo8823" path="res://resources/levels/level_5-1.tres" id="7_82xsv"]
+[ext_resource type="Resource" path="res://resources/levels/level_5-1.tres" id="7_82xsv"]
 [ext_resource type="Texture2D" uid="uid://da22mvr2858k0" path="res://sprites/fire-spritesheet.png" id="8_5vw27"]
 [ext_resource type="Resource" uid="uid://bcskxfvsimno" path="res://resources/levels/level_5-2.tres" id="8_getpj"]
 [ext_resource type="Texture2D" uid="uid://dcbwll7yw8ds7" path="res://sprites/particle.png" id="9_kek77"]
 [ext_resource type="Resource" uid="uid://cha2xe012u5n3" path="res://resources/levels/level_6-3.tres" id="11_1u8w0"]
 [ext_resource type="PackedScene" uid="uid://xmjk6prny0i5" path="res://scenes/masks/mask_clock.tscn" id="11_efxa6"]
-[ext_resource type="Resource" uid="uid://ypc2jucpndu6" path="res://resources/levels/level_6-4.tres" id="12_0odxb"]
+[ext_resource type="Resource" path="res://resources/levels/level_6-4.tres" id="12_0odxb"]
 [ext_resource type="PackedScene" uid="uid://bbmyiyfx1lg4m" path="res://scenes/masks/mask_swap.tscn" id="12_dg77c"]
-[ext_resource type="Resource" uid="uid://ckstmyink2wbv" path="res://resources/levels/level_7-3.tres" id="12_kq58d"]
-[ext_resource type="Resource" uid="uid://c2dl41v5vp72a" path="res://resources/levels/level_6-5.tres" id="13_1u8w0"]
-[ext_resource type="Resource" uid="uid://duvk5qxs4dpsc" path="res://resources/levels/level_8-3.tres" id="13_seu75"]
-[ext_resource type="Resource" uid="uid://cld28r14sutkb" path="res://resources/levels/level_7-1.tres" id="14_1u8w0"]
+[ext_resource type="Resource" path="res://resources/levels/level_7-3.tres" id="12_kq58d"]
+[ext_resource type="Resource" path="res://resources/levels/level_6-5.tres" id="13_1u8w0"]
+[ext_resource type="Resource" path="res://resources/levels/level_8-3.tres" id="13_seu75"]
+[ext_resource type="Resource" path="res://resources/levels/level_7-1.tres" id="14_1u8w0"]
 [ext_resource type="Resource" uid="uid://cq4s5k5fvg1mn" path="res://resources/levels/level_9-2.tres" id="14_htxhm"]
 [ext_resource type="AudioStream" uid="uid://cr37g27g88t28" path="res://audio/sfx/level_complete.ogg" id="16_kq58d"]
+[ext_resource type="AudioStream" uid="uid://b6vms15h6lod6" path="res://audio/ggj-2026.wav" id="17_htxhm"]
 [ext_resource type="AudioStream" uid="uid://c0x8luhy4grtw" path="res://audio/sfx/fire_loop_crackle.wav" id="17_seu75"]
 [ext_resource type="Script" uid="uid://bfsvapxkw13np" path="res://scripts/runes.gd" id="25_0odxb"]
 [ext_resource type="Texture2D" uid="uid://dfjm7upnb7do" path="res://models/TextureHerb/BC_Herbs.png" id="25_lswn8"]
 [ext_resource type="Texture2D" uid="uid://bjr0iu02lbklu" path="res://models/TextureHerb/ORM_Herbs.png" id="26_xuqvo"]
 [ext_resource type="Texture2D" uid="uid://d1lcvs2s2njhj" path="res://models/TextureHerb/N_Herbs.png" id="27_qsp4k"]
-[ext_resource type="Script" path="res://scripts/foliage.gd" id="30_htxhm"]
+[ext_resource type="Script" uid="uid://df60a851xuu7r" path="res://scripts/foliage.gd" id="30_htxhm"]
 [ext_resource type="PackedScene" uid="uid://b7cercnrqjym4" path="res://scenes/totems/totem_1.tscn" id="30_jq2sk"]
 [ext_resource type="Texture2D" uid="uid://d1dnl7m7m6152" path="res://models/Foliage/T_Foliage.png" id="30_seu75"]
 [ext_resource type="PackedScene" uid="uid://mm7au23wm3ei" path="res://scenes/totems/totem_2.tscn" id="31_4k2k6"]
@@ -240,11 +241,12 @@ uv1_scale = Vector3(10, 10, 10)
 [sub_resource type="PlaneMesh" id="PlaneMesh_1bvp3"]
 size = Vector2(100, 100)
 
-[node name="Main" type="Node3D" unique_id=906742551]
+[node name="Main" type="Node3D" unique_id=906742551 node_paths=PackedStringArray("rune")]
 script = ExtResource("1_1bvp3")
 mask_scene = ExtResource("3_1bvp3")
 shaman_scene = ExtResource("2_h2yge")
 levels = Array[ExtResource("4_7mycd")]([ExtResource("6_cegan"), ExtResource("7_82xsv"), ExtResource("8_getpj"), ExtResource("11_1u8w0"), ExtResource("12_0odxb"), ExtResource("13_1u8w0"), ExtResource("14_1u8w0"), ExtResource("12_kq58d"), ExtResource("13_seu75"), ExtResource("14_htxhm")])
+rune = NodePath("Rune")
 
 [node name="Audios" type="Node3D" parent="." unique_id=1942328178]
 
@@ -254,6 +256,10 @@ stream = ExtResource("16_kq58d")
 [node name="FireLoop" type="AudioStreamPlayer3D" parent="Audios" unique_id=1441322423]
 stream = ExtResource("17_seu75")
 volume_db = -6.0
+autoplay = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audios" unique_id=1404965537]
+stream = ExtResource("17_htxhm")
 autoplay = true
 
 [node name="Rune" type="Node" parent="." unique_id=1026484157]
@@ -316,7 +322,7 @@ material = SubResource("StandardMaterial3D_jq2sk")
 [node name="Foliages" type="Node3D" parent="WorldEnvironment" unique_id=1410767275]
 
 [node name="SM_Monstera_var2" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=2062155737]
-transform = Transform3D(1.2062624, 0, -4.3104672, 0, 4.4760695, 0, 4.3104672, 0, 1.2062624, -6.6604548, 0, -0.5635575)
+transform = Transform3D(-1.6390736, 0, -3.1832216, 0, 3.5804276, 0, 3.1832216, 0, -1.6390736, -6.6604548, 0, -0.5635575)
 script = ExtResource("30_htxhm")
 max_scale = 5.0
 random_rotation_y = true
@@ -327,7 +333,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var3" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=1866505285]
-transform = Transform3D(0.6409622, 0, -1.1083192, 0, 1.280314, 0, 1.1083192, 0, 0.6409622, 7.0336266, 0, -3.3424811)
+transform = Transform3D(-4.6067877, 0, -0.40285638, 0, 4.6243687, 0, 0.40285638, 0, -4.6067877, 7.0336266, 0, -3.3424811)
 script = ExtResource("30_htxhm")
 max_scale = 5.0
 random_rotation_y = true
@@ -338,7 +344,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var4" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=464085442]
-transform = Transform3D(-3.0938158, 0, -0.81694824, 0, 3.1998596, 0, 0.81694824, 0, -3.0938158, 8.128046, 0, -10.285843)
+transform = Transform3D(2.200981, 0, 2.9870503, 0, 3.7103622, 0, -2.9870503, 0, 2.200981, 8.128046, 0, -10.285843)
 script = ExtResource("30_htxhm")
 max_scale = 5.0
 random_rotation_y = true
@@ -349,7 +355,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var5" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=757415976]
-transform = Transform3D(1.7449468, 0, 0.77709913, 0, 1.9101629, 0, -0.77709913, 0, 1.7449468, -2.4490824, 0, -9.464729)
+transform = Transform3D(1.8438323, 0, 1.2327613, 0, 2.217976, 0, -1.2327613, 0, 1.8438323, -2.4490824, 0, -9.464729)
 script = ExtResource("30_htxhm")
 max_scale = 5.0
 random_rotation_y = true
@@ -360,7 +366,7 @@ transform = Transform3D(30.480003, 1.1368684e-13, -1.4305115e-06, 0, 30.480003, 
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var6" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=1594904154]
-transform = Transform3D(0.7090712, 0, 4.5701985, 0, 4.624878, 0, -4.5701985, 0, 0.7090712, -8.203965, 0, -8.937663)
+transform = Transform3D(-0.383041, 0, -1.8130049, 0, 1.8530265, 0, 1.8130049, 0, -0.383041, -8.203965, 0, -8.937663)
 script = ExtResource("30_htxhm")
 max_scale = 5.0
 random_rotation_y = true
@@ -371,7 +377,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var7" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=1810482767]
-transform = Transform3D(-0.87722945, 0, -3.9443521, 0, 4.0407233, 0, 3.9443521, 0, -0.87722945, -10.203965, 0, -5.937663)
+transform = Transform3D(-0.528037, 0, -1.5432518, 0, 1.6310883, 0, 1.5432518, 0, -0.528037, -10.203965, 0, -5.937663)
 script = ExtResource("30_htxhm")
 max_scale = 5.0
 random_rotation_y = true
@@ -382,7 +388,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var8" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=1736498408]
-transform = Transform3D(-1.1857882, 0, 1.5197127, 0, 1.9275944, 0, -1.5197127, 0, -1.1857882, -9.278755, -9.536743e-07, -2.6990125)
+transform = Transform3D(2.8155773, 0, -3.7759137, 0, 4.7100954, 0, 3.7759137, 0, 2.8155773, -9.278755, -9.536743e-07, -2.6990125)
 script = ExtResource("30_htxhm")
 max_scale = 5.0
 random_rotation_y = true
@@ -393,7 +399,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var20" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=781311428]
-transform = Transform3D(4.1592264, 0, 2.0092652, 0, 4.6191244, 0, -2.0092652, 0, 4.1592264, -7.187313, -9.536743e-07, 2.3644803)
+transform = Transform3D(0.99369234, 0, -4.4463844, 0, 4.5560684, 0, 4.4463844, 0, 0.99369234, -7.187313, -9.536743e-07, 2.3644803)
 script = ExtResource("30_htxhm")
 max_scale = 5.0
 random_rotation_y = true
@@ -404,7 +410,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var21" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=1382092264]
-transform = Transform3D(-1.7411723, 0, -3.1212919, 0, 3.5740936, 0, 3.1212919, 0, -1.7411723, -9.856654, -9.536743e-07, 1.0986078)
+transform = Transform3D(-1.1595708, 0, 1.4407351, 0, 1.8494112, 0, -1.4407351, 0, -1.1595708, -9.856654, -9.536743e-07, 1.0986078)
 script = ExtResource("30_htxhm")
 max_scale = 5.0
 random_rotation_y = true
@@ -415,7 +421,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var22" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=670729158]
-transform = Transform3D(-1.2035772, 0, -3.0648258, 0, 3.2926822, 0, 3.0648258, 0, -1.2035772, -6.4627895, -9.536743e-07, 5.4728527)
+transform = Transform3D(-0.96758586, 0, -4.280763, 0, 4.3887534, 0, 4.280763, 0, -0.96758586, -6.4627895, -9.536743e-07, 5.4728527)
 script = ExtResource("30_htxhm")
 max_scale = 5.0
 random_rotation_y = true
@@ -426,7 +432,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var23" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=1521384681]
-transform = Transform3D(2.2732892, 0, 4.187498, 0, 4.764765, 0, -4.187498, 0, 2.2732892, -1.0041409, -9.536743e-07, 7.612645)
+transform = Transform3D(1.349052, 0, 0.022482349, 0, 1.3492392, 0, -0.022482349, 0, 1.349052, -1.0041409, -9.536743e-07, 7.612645)
 script = ExtResource("30_htxhm")
 max_scale = 5.0
 random_rotation_y = true
@@ -437,7 +443,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var24" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=1763458129]
-transform = Transform3D(0.641338, 0, 0.9369732, 0, 1.135444, 0, -0.9369732, 0, 0.641338, 3.668459, -9.536743e-07, 6.084223)
+transform = Transform3D(-0.093848735, 0, -2.5603793, 0, 2.5620987, 0, 2.5603793, 0, -0.093848735, 3.668459, -9.536743e-07, 6.084223)
 script = ExtResource("30_htxhm")
 max_scale = 5.0
 random_rotation_y = true
@@ -448,7 +454,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var25" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=1502399581]
-transform = Transform3D(-1.3113573, 0, -2.3174236, 0, 2.662726, 0, 2.3174236, 0, -1.3113573, 5.3278904, -9.536743e-07, 3.0710478)
+transform = Transform3D(0.23271745, 0, 2.6292405, 0, 2.6395195, 0, -2.6292405, 0, 0.23271745, 5.3278904, -9.536743e-07, 3.0710478)
 script = ExtResource("30_htxhm")
 max_scale = 5.0
 random_rotation_y = true
@@ -459,7 +465,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var26" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=148812428]
-transform = Transform3D(-2.0929732, 0, 3.933719, 0, 4.455859, 0, -3.933719, 0, -2.0929732, 7.948038, -9.536743e-07, 1.2369425)
+transform = Transform3D(0.032776706, 0, -1.1146704, 0, 1.1151521, 0, 1.1146704, 0, 0.032776706, 7.948038, -9.536743e-07, 1.2369425)
 script = ExtResource("30_htxhm")
 max_scale = 5.0
 random_rotation_y = true
@@ -470,7 +476,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var9" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=1198227852]
-transform = Transform3D(-1.7219421, 0, -1.7456475, 0, 2.4520135, 0, 1.7456475, 0, -1.7219421, -7.0071764, -9.536743e-07, -5.8759613)
+transform = Transform3D(-4.5391726, 0, -1.9611917, 0, 4.9447308, 0, 1.9611917, 0, -4.5391726, -7.0071764, -9.536743e-07, -5.8759613)
 script = ExtResource("30_htxhm")
 max_scale = 5.0
 random_rotation_y = true
@@ -481,7 +487,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var10" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=1633803261]
-transform = Transform3D(1.9973453, 0, -2.852128, 0, 3.4819565, 0, 2.852128, 0, 1.9973453, -6.593274, -9.536743e-07, -9.3422)
+transform = Transform3D(-0.39969525, 0, 4.0748324, 0, 4.094388, 0, -4.0748324, 0, -0.39969525, -6.593274, -9.536743e-07, -9.3422)
 script = ExtResource("30_htxhm")
 max_scale = 5.0
 random_rotation_y = true
@@ -492,7 +498,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var11" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=248626414]
-transform = Transform3D(0.87166643, 0, 2.8965824, 0, 3.0248952, 0, -2.8965824, 0, 0.87166643, 5.76686, -9.536743e-07, -7.871937)
+transform = Transform3D(0.7618216, 0, 3.66561, 0, 3.7439377, 0, -3.66561, 0, 0.7618216, 5.76686, -9.536743e-07, -7.871937)
 script = ExtResource("30_htxhm")
 max_scale = 5.0
 random_rotation_y = true
@@ -503,7 +509,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var12" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=1412622122]
-transform = Transform3D(-3.2286575, 0, 0.41960573, 0, 3.25581, 0, -0.41960573, 0, -3.2286575, 8.6929455, -9.536743e-07, -9.534582)
+transform = Transform3D(-2.2922735, 0, -1.4202745, 0, 2.6966085, 0, 1.4202745, 0, -2.2922735, 8.6929455, -9.536743e-07, -9.534582)
 script = ExtResource("30_htxhm")
 max_scale = 5.0
 random_rotation_y = true
@@ -514,7 +520,7 @@ transform = Transform3D(30.479998, 1.7053026e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var13" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=594215557]
-transform = Transform3D(3.429779, 0, 1.005917, 0, 3.5742488, 0, -1.005917, 0, 3.429779, 2.001725, -9.536743e-07, -10.921636)
+transform = Transform3D(-2.8487155, 0, 0.51798856, 0, 2.895426, 0, -0.51798856, 0, -2.8487155, 2.001725, -9.536743e-07, -10.921636)
 script = ExtResource("30_htxhm")
 max_scale = 5.0
 random_rotation_y = true
@@ -525,7 +531,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var14" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=2136419315]
-transform = Transform3D(1.4967328, 0, -4.587476, 0, 4.825468, 0, 4.587476, 0, 1.4967328, -11.275842, -9.536743e-07, -11.181474)
+transform = Transform3D(-0.7003026, 0, 1.4325827, 0, 1.59459, 0, -1.4325827, 0, -0.7003026, -11.275842, -9.536743e-07, -11.181474)
 script = ExtResource("30_htxhm")
 max_scale = 5.0
 random_rotation_y = true
@@ -536,7 +542,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var15" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=1273796743]
-transform = Transform3D(0.026309378, 0, -3.561629, 0, 3.5617263, 0, 3.561629, 0, 0.026309378, -12.902461, -9.536743e-07, -2.7497091)
+transform = Transform3D(2.7688367, 0, 0.5084532, 0, 2.8151345, 0, -0.5084532, 0, 2.7688367, -12.902461, -9.536743e-07, -2.7497091)
 script = ExtResource("30_htxhm")
 max_scale = 5.0
 random_rotation_y = true
@@ -547,7 +553,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var16" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=1522224021]
-transform = Transform3D(4.1057825, 0, -0.3814345, 0, 4.1234627, 0, 0.3814345, 0, 4.1057825, 10.330565, -9.536743e-07, -5.840313)
+transform = Transform3D(-3.229481, 0, -1.5225171, 0, 3.570379, 0, 1.5225171, 0, -3.229481, 10.330565, -9.536743e-07, -5.840313)
 script = ExtResource("30_htxhm")
 max_scale = 5.0
 random_rotation_y = true
@@ -558,7 +564,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var17" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=898993171]
-transform = Transform3D(1.3471804, 0, -0.22898349, 0, 1.3665023, 0, 0.22898349, 0, 1.3471804, 11.601703, -9.536743e-07, -1.769414)
+transform = Transform3D(-0.22145307, 0, -2.7228503, 0, 2.731841, 0, 2.7228503, 0, -0.22145307, 11.601703, -9.536743e-07, -1.769414)
 script = ExtResource("30_htxhm")
 max_scale = 5.0
 random_rotation_y = true
@@ -569,7 +575,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var18" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=969866676]
-transform = Transform3D(-1.0343899, 0, -3.5250928, 0, 3.673723, 0, 3.5250928, 0, -1.0343899, 3.4008226, -9.536743e-07, -11.191566)
+transform = Transform3D(2.4750783, 0, -1.7696737, 0, 3.0426564, 0, 1.7696737, 0, 2.4750783, 3.4008226, -9.536743e-07, -11.191566)
 script = ExtResource("30_htxhm")
 max_scale = 5.0
 random_rotation_y = true
@@ -580,7 +586,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var19" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=1667303998]
-transform = Transform3D(0.8563856, 0, 4.3891053, 0, 4.4718723, 0, -4.3891053, 0, 0.8563856, -0.119683266, -9.536743e-07, -13.83049)
+transform = Transform3D(-1.6149837, 0, -1.5262831, 0, 2.2220964, 0, 1.5262831, 0, -1.6149837, -0.119683266, -9.536743e-07, -13.83049)
 script = ExtResource("30_htxhm")
 max_scale = 5.0
 random_rotation_y = true
@@ -591,7 +597,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var27" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=1965477250]
-transform = Transform3D(1.7155203, 0, -1.7545902, 0, 2.4538941, 0, 1.7545902, 0, 1.7155203, -6.2770357, -9.536743e-07, -12.345737)
+transform = Transform3D(-3.213247, 0, 2.014892, 0, 3.792723, 0, -2.014892, 0, -3.213247, -6.2770357, -9.536743e-07, -12.345737)
 script = ExtResource("30_htxhm")
 max_scale = 5.0
 random_rotation_y = true
@@ -602,7 +608,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var28" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=1830434006]
-transform = Transform3D(-2.737899, 0, 1.4920282, 0, 3.1180506, 0, -1.4920282, 0, -2.737899, -3.8752298, -9.536743e-07, -14.179843)
+transform = Transform3D(-0.09936087, 0, 4.989896, 0, 4.990885, 0, -4.989896, 0, -0.09936087, -3.8752298, -9.536743e-07, -14.179843)
 script = ExtResource("30_htxhm")
 max_scale = 5.0
 random_rotation_y = true
@@ -613,7 +619,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var29" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=517908395]
-transform = Transform3D(-0.14463128, 0, 2.434248, 0, 2.438541, 0, -2.434248, 0, -0.14463128, -9.77057, -9.536743e-07, -13.743152)
+transform = Transform3D(2.0590847, 0, 1.1026145, 0, 2.33572, 0, -1.1026145, 0, 2.0590847, -9.77057, -9.536743e-07, -13.743152)
 script = ExtResource("30_htxhm")
 max_scale = 5.0
 random_rotation_y = true
@@ -624,7 +630,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var30" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=2145534399]
-transform = Transform3D(-9.837437, 0, 0.16193976, 0, 9.83877, 0, -0.16193976, 0, -9.837437, -11.823022, -9.536743e-07, -8.852203)
+transform = Transform3D(5.17865, 0, 3.4641683, 0, 6.2304797, 0, -3.4641683, 0, 5.17865, -11.823022, -9.536743e-07, -8.852203)
 script = ExtResource("30_htxhm")
 min_scale = 5.0
 max_scale = 10.0
@@ -636,7 +642,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var31" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=1561876966]
-transform = Transform3D(-3.698938, 0, 6.749355, 0, 7.6964884, 0, -6.749355, 0, -3.698938, -17.71836, -9.536743e-07, -12.957107)
+transform = Transform3D(6.599071, 0, 2.3982291, 0, 7.021342, 0, -2.3982291, 0, 6.599071, -17.71836, -9.536743e-07, -12.957107)
 script = ExtResource("30_htxhm")
 min_scale = 5.0
 max_scale = 10.0
@@ -648,7 +654,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var32" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=1462594577]
-transform = Transform3D(0.20733102, 0, 5.6937776, 0, 5.6975513, 0, -5.6937776, 0, 0.20733102, -12.696405, -9.536743e-07, -18.503092)
+transform = Transform3D(-0.95946157, 0, -9.799239, 0, 9.846099, 0, 9.799239, 0, -0.95946157, -12.696405, -9.536743e-07, -18.503092)
 script = ExtResource("30_htxhm")
 min_scale = 5.0
 max_scale = 10.0
@@ -660,7 +666,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var33" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=836687229]
-transform = Transform3D(-5.2679467, 0, 5.515911, 0, 7.6273546, 0, -5.515911, 0, -5.2679467, -4.137249, -9.536743e-07, -19.59482)
+transform = Transform3D(0.37946653, 0, 5.542029, 0, 5.555005, 0, -5.542029, 0, 0.37946653, -4.137249, -9.536743e-07, -19.59482)
 script = ExtResource("30_htxhm")
 min_scale = 5.0
 max_scale = 10.0
@@ -672,7 +678,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var34" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=1392268027]
-transform = Transform3D(-4.051142, 0, 6.0412226, 0, 7.273797, 0, -6.0412226, 0, -4.051142, 3.5485268, -9.536743e-07, -16.97467)
+transform = Transform3D(5.2270393, 0, -2.8961642, 0, 5.97576, 0, 2.8961642, 0, 5.2270393, 3.5485268, -9.536743e-07, -16.97467)
 script = ExtResource("30_htxhm")
 min_scale = 5.0
 max_scale = 10.0
@@ -684,7 +690,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var35" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=720643520]
-transform = Transform3D(4.846282, 0, 3.1787686, 0, 5.795776, 0, -3.1787686, 0, 4.846282, 9.225517, -9.536743e-07, -14.398189)
+transform = Transform3D(7.504766, 0, 0.0647967, 0, 7.5050454, 0, -0.0647967, 0, 7.504766, 9.225517, -9.536743e-07, -14.398189)
 script = ExtResource("30_htxhm")
 min_scale = 5.0
 max_scale = 10.0
@@ -696,7 +702,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var36" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=252314767]
-transform = Transform3D(7.393691, 0, 3.525067, 0, 8.191017, 0, -3.525067, 0, 7.393691, 13.941788, -9.536743e-07, -10.07494)
+transform = Transform3D(0.26676297, 0, 8.788259, 0, 8.792306, 0, -8.788259, 0, 0.26676297, 13.941788, -9.536743e-07, -10.07494)
 script = ExtResource("30_htxhm")
 min_scale = 5.0
 max_scale = 10.0
@@ -708,7 +714,7 @@ transform = Transform3D(30.480001, 1.1368684e-13, -9.536743e-07, 0, 30.480001, 2
 mesh = SubResource("ArrayMesh_4k2k6")
 
 [node name="SM_Monstera_var37" type="Node3D" parent="WorldEnvironment/Foliages" unique_id=1504603230]
-transform = Transform3D(7.874316, 0, -3.1679616, 0, 8.487687, 0, 3.1679616, 0, 7.874316, -17.194338, -9.536743e-07, -5.0093155)
+transform = Transform3D(6.530064, 0, 1.1124914, 0, 6.6241508, 0, -1.1124914, 0, 6.530064, -17.194338, -9.536743e-07, -5.0093155)
 script = ExtResource("30_htxhm")
 min_scale = 5.0
 max_scale = 10.0
@@ -745,7 +751,7 @@ transform = Transform3D(-0.946059, 0.14981519, 0.28686738, 0, 0.8862816, -0.4628
 assigned_shaman = NodePath("../../ShamansContainer/Shaman2")
 
 [node name="ModelContainer" parent="MasksContainer/Mask2" index="1" unique_id=1609231757]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0071198996, -0.8932487)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0046265963, -0.8932487)
 
 [node name="MaskClock" parent="MasksContainer/Mask2/ModelContainer" index="0" unique_id=1713705050 instance=ExtResource("11_efxa6")]
 
@@ -753,14 +759,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0071198996, -0.8932487)
 visible = false
 
 [node name="AnimationPlayer" parent="MasksContainer/Mask2" index="8" unique_id=791805540]
-speed_scale = 1.8176827
+speed_scale = 1.9173094
 
 [node name="Mask3" parent="MasksContainer" unique_id=835432512 node_paths=PackedStringArray("assigned_shaman") instance=ExtResource("3_1bvp3")]
 transform = Transform3D(-0.9998273, -0.0027739264, -0.0060004187, 0, 0.9075845, -0.41956183, 0.006610453, -0.4195548, -0.90756, -0.07148182, 1.0018739, -3.811516)
 assigned_shaman = NodePath("../../ShamansContainer/Shaman3")
 
 [node name="ModelContainer" parent="MasksContainer/Mask3" index="1" unique_id=1609231757]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0071197893, -0.8932487)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0046417937, -0.8932487)
 
 [node name="MaskSwap" parent="MasksContainer/Mask3/ModelContainer" index="0" unique_id=937219786 instance=ExtResource("12_dg77c")]
 
@@ -768,7 +774,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0071197893, -0.8932487)
 visible = false
 
 [node name="AnimationPlayer" parent="MasksContainer/Mask3" index="8" unique_id=791805540]
-speed_scale = 1.9429095
+speed_scale = 1.8605117
 
 [node name="TotemsContainer" type="Node3D" parent="." unique_id=1981188701]
 
